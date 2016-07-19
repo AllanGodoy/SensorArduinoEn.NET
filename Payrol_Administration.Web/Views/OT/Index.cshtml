@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+<link href="~/Content/Efectos.css" rel="stylesheet" />
+<link href="~/Content/GoogleMap/GoogleMap.css" rel="stylesheet" />
+
+
+
+<div class="page-container">
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-12 animated  fadeIn">
+
+                <button id="mapa" data-toggle="modal" data-target="#modal_large">Obtener ubicacion</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal " id="modal_large" tabindex="-1" role="dialog" aria-labelledby="largeModalHead" aria-hidden="true">
+    <div class="modal-dialog modal-lg" id="minimodal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="largeModalHead"></h4>
+            </div>
+           @*----------------------Obtiene ubicacion del mapa----------------------------*@
+
+              <div class="panel panel-default ">
+                    <h2>Ubicacion</h2>
+                    <div id="buttonbar">
+                        <div layout="row">
+                            @*<md-input-container class="md-block" flex="33">
+                                <label>Search by Place</label>
+                                <input id="nptsearch" type="text" placeholder="Simtex International" />
+                                
+                            </md-input-container>*@
+
+                            <md-input-container class="md-block" flex="33">
+                                <label>Latitude</label>
+                                <input id="latitude" type="text"   />
+                              
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex="33">
+                                <label>Longitude</label>
+                                <input id="Longitude" type="text"   />
+                             
+                            </md-input-container>
+                        </div>
+                        <div id="map_go"></div>
+                    </div>
+                </div>
+           @*---------------------------------------------------------------------------*@
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="CerrarModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=pt-BR&.js"></script>*@
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCvBpviy7hZ8IhkOgWtlbYKOwspMlIph-U"></script>
+
+@*<script src="~/Scripts/GoogleMap/google.api.js"></script>*@
+<script src="~/Scripts/GoogleMap/GoogleMap.js"></script>

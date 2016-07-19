@@ -1,0 +1,208 @@
+﻿@model IEnumerable<Payrol_Administration.Web.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Payrol_Administration.Web.Models.AspNetUser> photos = ViewBag.List;
+}
+<div class="page-container animated  fadeIn">
+    <div class="page-content">
+        <h2 aling="center">USER PHOTO</h2>
+
+        @*------------------------Photo---------------------------*@
+
+        <table class="table">
+
+            @{
+                int j = 0;
+
+                for (int i = 0; i < photos.Count(); i += 4)
+                {
+
+
+                    j = i;
+                    <tr>
+
+                        @while (j < i + 4 && j < photos.Count())
+                        {
+
+                            <td>
+                                <div class="col-md-12">
+                                    <!-- CONTACT ITEM -->
+
+                                    <div class="panel-body profile ">
+                                        <div class="profile-image col-md-3">
+
+                                            @if (photos[j].Photo != null)
+                                            {
+
+                                                @* I have done this for show 4 images in  a Row *@
+
+                                                <img class="animated  flip" src="data:image/png;base64,@Convert.ToBase64String(photos[j].Photo, 0, photos[j].Photo.Length)" width="100" />
+
+
+
+
+                                            }
+                                            @if (photos[j].Photo == null)
+                                            {
+
+                                                <img class="animated  flip" src="~/Content/assets/images/users/SinImagen.jpg" alt="User" width="100" />
+
+                                            }
+                                        </div>
+                                        <div class="profile-data">
+                                            <div class="profile-data-name">@photos[j].UserName</div>
+                                            <div class="profile-data-name"> </div>
+                                        </div>
+                                        @*<div class="profile-controls">
+                                                <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                                <a href="#" class="profile-control-right"><span class="fa fa-phone"></span></a>
+                                            </div>*@
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="contact-info" align="center">
+                                            <h4><button id=@j class="btn btn-default btn-block" value=@photos[j].Id data-toggle="modal" data-target="#modal_large"><font color="#086A87"><b>CHANGE PHOTO</b></font></button></h4>
+                                            @*<h4> @Html.ActionLink("Edit", "Edit", new { id = photos[j].Id }) </h4>*@
+                                            @if (photos[j].Photo != null)
+                                            {
+
+                                                <h4> @Html.ActionLink("Details", "Details", new { id = photos[j].Id })</h4>
+
+                                            }
+
+                                            @*<p><small></small><br>(555) 555-55-55</p>
+                                                <p><small>Email</small><br>nadiaali@domain.com</p>
+                                                <p><small>Address</small><br>123 45 Street San Francisco, CA, USA</p>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                            j++;
+                            @*@Html.Hidden("ValorJ", new { value = j, id = "ValorJ" });*@
+                        }
+
+                        <!-- END CONTACT ITEM -->
+
+                    </tr>
+                }
+            }
+
+        </table>
+        @*-----------------------modal 1----------------*@
+        <div class="modal" id="modal_large" tabindex="-1" role="dialog" aria-labelledby="largeModalHead" aria-hidden="true">
+            <div class="modal-dialog modal-lg" id="minimodal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="largeModalHead">Change Photo User</h4>
+                    </div>
+                    <div class="modal-body">
+                        @*---------------------------------tabs-----------------------------*@
+
+
+
+
+
+                        <div id="editaresultado">1</div>
+
+
+
+
+
+                        @*---------------------------------End tabs-----------------------------*@
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="CerrarModal">Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*-----------------------modal 2----------------*@
+        <div class="modal" id="modal_large2" tabindex="-1" role="dialog" aria-labelledby="largeModalHead" aria-hidden="true">
+            <div class="modal-dialog modal-lg" id="minimodal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="largeModalHead">xfvcdcvsdcvsd</h4>
+                    </div>
+                    <div class="modal-body">
+                        @*---------------------------------tabs-----------------------------*@
+
+
+
+
+
+                        <div id="Detalles">2</div>
+
+
+
+
+
+                        @*---------------------------------End tabs-----------------------------*@
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="CerrarModal">Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*<h4><button id="Editando" class="btn btn-default btn-block" value=@photos[0].Id data-toggle="modal" data-target="#modal_large">EDIT</button></h4>*@
+    </div>
+</div>
+   
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        for (var i = 0; i < 100 ; i++) {
+            if (i < 100) {
+                document.getElementById(i).addEventListener("click", function () {
+
+                    $('#modal_large').addClass('animated  fadeInUpBig');
+
+                    var PhotoId = $(this).val();
+                    //document.getElementById("machine").innerHTML = "Machine # " + PrductoId;
+
+
+                    var URL = '../AspNetUsers/EditPartial?id=' + PhotoId;
+                    //document.getElementById("ChangeMachine").value = PrductoId;
+
+                    $.ajax({
+                        url: URL,
+                        contentType: 'application/html; charset=utf-8',
+                        type: 'GET',
+                        datatype: 'html'
+                    })
+                    .success(function (result) {
+
+                        $('#editaresultado').html(result);
+
+                    })
+                });
+            }
+
+        }
+    });
+</script>

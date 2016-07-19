@@ -1,0 +1,137 @@
+﻿@using IT_Help_Desk.Web.Models
+@model LoginViewModel
+@{
+    Layout = null;
+    ViewBag.ip4 = HttpContext.Current.Request.UserHostAddress;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Human Resources</title>
+    <link href="~/Content/LoginStyle/LoginStyle.css" rel="stylesheet" />
+    <link href="~/Content/Efectos.css" rel="stylesheet" />
+   
+</head>
+
+    <body>
+
+        <div class="content">
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-bottom">
+                    <form role="form" action="" method="post">
+                        <div class="mat-in">
+
+                            <img src="~/Content/img/UTHLogo/UTH.png" alt="Smiley face" height="200" width="300" />
+                        </div>
+
+
+                        <div class="mat-in">
+
+
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username", @autofocus = "" })
+                            <span class="bar"></span>
+                            <label>Username</label>
+
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mat-in">
+
+
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                            <span class="bar"></span>
+                            <label>Password</label>
+
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <button type="submit" name="submit" id="login">Login</button>
+                        </div>
+                    </form>
+                </div>
+            }
+
+        </div>
+        <div class="bg-boxes">
+            <svg width="300px" height="100%" id="col1">
+                <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
+            </svg>
+            <svg width="200px" height="100%" id="col2">
+                <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub2" />
+            </svg>
+            <svg width="260px" height="100%" id="col3">
+                <rect width="130px" height="130px" x="65px" y="65px" class="bubble" id="bub3" />
+            </svg>
+            <svg width="160px" height="100%" id="col4">
+                <rect width="80px" height="80px" x="40px" y="40px" class="bubble" id="bub4" />
+            </svg>
+            <svg width="240px" height="100%" id="col5">
+                <rect width="120px" height="120px" x="60px" y="60px" class="bubble" id="bub5" />
+            </svg>
+
+            <!--Here is a triangle-->
+            <svg width="200px" height="100%" id="col6">
+                <polygon points="50,150 100,50 150,150" class="bubble" id="bub6" />
+            </svg>
+            <svg width="200px" height="100%" id="col7">
+                <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub7" />
+            </svg>
+            <svg width="200px" height="100%" id="col8">
+                <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub8" />
+            </svg>
+            <svg width="200px" height="100%" id="col9">
+                <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub9" />
+            </svg>
+            <svg width="200px" height="100%" id="col10">
+                <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub10" />
+            </svg>
+            <svg width="100px" height="100%" id="col11">
+                <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
+            </svg>
+        </div>
+
+
+        <script src="~/Content/custom/index.js"></script>
+
+
+    </body>
+
+    
+
+</html>
+
+<script language="JavaScript">
+    window.onload = function () {
+        if (typeof history.pushState === "function") {
+            history.pushState("jibberish", null, null);
+            window.onpopstate = function () {
+                history.pushState('newjibberish', null, null);
+                // Handle the back (or forward) buttons here
+                // Will NOT handle refresh, use onbeforeunload for this.
+            };
+        }
+        else {
+            var ignoreHashChange = true;
+            window.onhashchange = function () {
+                if (!ignoreHashChange) {
+                    ignoreHashChange = true;
+                    window.location.hash = Math.random();
+                    // Detect and redirect change here
+                    // Works in older FF and IE9
+                    // * it does mess with your hash symbol (anchor?) pound sign
+                    // delimiter on the end of the URL
+                }
+                else {
+                    ignoreHashChange = false;
+                }
+            };
+        }
+    }
+</script>

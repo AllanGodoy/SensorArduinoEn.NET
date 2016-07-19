@@ -1,0 +1,93 @@
+﻿@model IT_Help_Desk.Web.Models.ApplicationGroup
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<div class="page-container animated  fadeIn">
+    <div class="page-content">
+
+        <div class="page-title">
+            <h2><span class="fa fa-asterisk"></span>Create New Admin Group</h2>
+        </div>
+
+        <div class="page-content-wrap">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- START DEFAULT DATATABLE -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@ViewBag.Message</h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <h4>ApplicationGroup</h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true)
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Name)
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Description)
+                                            @Html.ValidationMessageFor(model => model.Description)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Select Group Roles
+                                        </label>
+                                        <div class="col-md-10">
+                                            @foreach (var item in (SelectList)ViewBag.RolesList)
+                                            {
+                                                <div>
+                                                    <input type="checkbox" name="SelectedRoles" value="@item.Text" class="checkbox-inline" />
+                                                    @Html.Label(item.Text, new { @class = "control-label" })
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

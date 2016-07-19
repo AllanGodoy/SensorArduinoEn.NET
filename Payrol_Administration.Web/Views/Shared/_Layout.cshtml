@@ -1,0 +1,296 @@
+﻿@using Payrol_Administration.Web.Models;
+
+
+@{
+    integratedDBEntities db = new integratedDBEntities();
+    List<AspNetUser> only = new List<AspNetUser>();
+    
+    //Guid guid = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+    //Cambios
+    only = db.AspNetUsers.ToList();
+    var extrae = from m in only where m.UserName == User.Identity.Name select m;
+    ViewBag.List = extrae.ToList();
+
+    
+    List<Payrol_Administration.Web.Models.AspNetUser> Lista2 = ViewBag.List;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>Simtex-International</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/Content/favicon.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="~/Content/css/theme-default.css" />
+    <!-- EOF CSS INCLUDE -->
+    <!-- START X-NAVIGATION VERTICAL -->
+    <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+        <!-- TOGGLE NAVIGATION -->
+        <li class="xn-icon-button">
+            <a href="~/Content/#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+        </li>
+        <!-- END TOGGLE NAVIGATION -->
+        <!-- SEARCH -->
+        @*<li class="xn-search">
+            <form role="form">
+                <input type="text" name="search" placeholder="Search..." />
+            </form>
+            </li>*@
+            <!-- END SEARCH -->
+            <!-- SIGN OUT -->
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+                {
+                    @Html.AntiForgeryToken()
+                        <li class="xn-icon-button pull-right">    
+                            <a href="javascript:document.getElementById('logoutForm').submit()" mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>       
+                        </li>
+                }
+        <li class="xn-icon-button pull-right">
+
+        </li>
+        <!-- END TASKS -->
+    </ul>
+    <!-- END X-NAVIGATION VERTICAL -->
+</head>
+<body>
+    <!-- START PAGE CONTAINER -->
+    <div class="page-container">
+
+        <!-- START PAGE SIDEBAR -->
+        <div class="page-sidebar">
+            <!-- START X-NAVIGATION -->
+            <ul class="x-navigation">
+                <li class="xn-logo">
+                    <a href="~/Atlant/index.cshtml">INICIO</a>
+                    <a href="~/Content/#" class="x-navigation-control"></a>
+                </li>
+                <li class="xn-profile">
+                    <a class="profile-mini">
+                        @{
+                            
+                            int j = 0;
+                            if (Lista2[0].Photo != null) { 
+                                for (int i = 0; i < Lista2.Count(); i += 4)
+                                {
+                                    j = i;
+                                    @* I have done this for show 4 images in  a Row *@
+                                    while (j < i + 4 && j < Lista2.Count())
+                                    {
+                                        <img class="animated  flip" src="data:image/png;base64,@Convert.ToBase64String(Lista2[j].Photo,0,Lista2[j].Photo.Length)" width="100" />
+                                        j++;
+                                    }
+                                }
+                            }
+                            if (Lista2[0].Photo == null)
+                            {
+                            <img class="animated  flip" src="~/Content/assets/images/users/SinImagen.jpg" alt="User" />
+                            }
+}
+                    </a>
+                    <div class="profile">
+                        <div class="profile-image">
+                            @*-----------------------------------agregando avatar--------------------------------------------------------*@
+                          @{
+
+                              j = 0;
+                              if (Lista2[0].Photo != null)
+                              {
+                                  for (int i = 0; i < Lista2.Count(); i += 4)
+                                  {
+                                      j = i;
+ 
+                                    @* I have done this for show 4 images in  a Row *@
+                                      while (j < i + 4 && j < Lista2.Count())
+                                      {
+                                            <img class="animated  flip" src="data:image/png;base64,@Convert.ToBase64String(Lista2[j].Photo,0,Lista2[j].Photo.Length)" width="100" />
+                                          j++;
+                                      }
+                                  }
+                              }
+                              if (Lista2[0].Photo == null)
+                              {
+                                 <img class="animated  flip" src="~/Content/assets/images/users/SinImagen.jpg" alt="User" />
+                              }
+                        }
+                              
+
+                            @*<img src="~/Content/assets/images/users/avatar.jpg" alt="SIMTEX-International" />*@
+                            @*---------------------------------------------------------------------------------------------------------*@
+                        </div>
+                        <div class="profile-data">
+
+
+                            <div class="profile-data-name">@Lista2[0].UserName</div>
+                            <div class="profile-data-title">Simtex International</div>
+
+
+                        </div>
+                        <div class="profile-controls">
+                            @*<a href="~/Content/pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
+                            <a href="~/Content/pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>*@
+                        </div>
+                    </div>
+                </li>
+                <li class="xn-title">Navigation</li>
+
+               @if (Request.IsAuthenticated && User.IsInRole("Home"))
+                {
+                <li><a href="~/Home/Index"><span class="fa fa-cogs"></span> <span class="xn-text">Home</span></a></li>
+                }
+                @*-----------------------------------------------------------------------Agregando Menu-------------------------------------------*@
+                   <li class="xn-openable">
+                   <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">O.T.</span></a>
+                        <ul>
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li><a href="~/OT/Index"><span class="glyphicon glyphicon-calendar"></span><span class="xn-text">Ordenes de Trabajo</span></a></li>
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
+                        {
+                            <li><a href="~/KnittingProduction/Index"><span class="fa fa-calendar"></span><span class="xn-text">Knitting Production</span></a></li>
+                        }
+
+                        @if (Request.IsAuthenticated && User.IsInRole("HistoryKnitting-Read"))
+                        {
+                            <li><a href="~/Historyknitting/Index"><span class="glyphicon glyphicon-calendar"></span><span class="xn-text">History Knitting</span></a></li>
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("KnitToBatch-Read"))
+                        {
+                            <li><a href="~/KnitToBatch/Index"><span class="fa fa-bars"></span> <span class="xn-text">Knit to Batch</span></a></li>
+                        }
+                        @*@if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
+                        {
+                            <li><a href="~/DailyProductionReport/Index"><span class="glyphicon glyphicon-tasks"></span> <span class="xn-text"> Daily Production Report</span></a></li>
+                        }*@
+                            @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
+                            {
+                                <li><a href="~/KnittingPerformance/Index"><span class="glyphicon glyphicon-ok-circle"></span> <span class="xn-text">Knitting Performance</span></a></li>
+                            }
+
+
+                            @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
+                            {
+                                <li><a href="~/DialyProduction1/Index"><span class="glyphicon glyphicon-ok-circle"></span> <span class="xn-text">Daily Production</span></a></li>
+                            }       
+                        </ul>
+                    </li>
+
+                    
+                    
+                    @if (Request.IsAuthenticated && User.IsInRole("PAT-Read"))
+                    {
+                        <li><a href="~/PAT/Index"><span class="fa fa-th"></span> <span class="xn-text">PAT</span></a></li>
+                    }
+                    
+                    @if (Request.IsAuthenticated && User.IsInRole("YarnRequest-Read"))
+                    {
+                        <li><a href="~/SolicitudDeHilazas/Index"><span class="fa fa-pencil-square-o"></span> <span class="xn-text">Yarn Request</span></a></li>
+
+                    }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("AuditLocations-Read"))
+                    {
+                        <li><a href="#"><span class="fa fa-check-square-o"></span> <span class="xn-text">Audit Locations</span></a></li>
+                    }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("KnittingProductionChart-Read"))
+                    {
+                        <li><a href="~/ProductionChart/Index"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Knitting Production Chart</span></a></li>
+                    }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Admin Pages</span></a>
+                            <ul>
+                                <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("Groups Admin", "Index", "GroupsAdmin")</li>
+                                <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
+                                <li>@Html.ActionLink("Add Users Photo", "Index", "AspNetUsers")</li>
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            <!-- END X-NAVIGATION -->
+        </div>
+
+    </div>
+    @*<!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="~/Account/LogOff" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->*@
+
+    <!-- START PRELOADS -->
+    <!-- END PRELOADS -->
+    <!-- START SCRIPTS -->
+    <!-- START PLUGINS -->
+    <script type="text/javascript" src="~/Content/js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/plugins/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script> <!-- END PLUGINS -->
+    <!-- THIS PAGE PLUGINS -->
+    <script type='text/javascript' src='~/Content/js/plugins/icheck/icheck.min.js'></script>
+    <script type="text/javascript" src="~/Content/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Content/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type="text/javascript" src="~/Content/js/plugins/bootstrap/bootstrap-select.js"></script>
+    <script type="text/javascript" src="~/Content/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+    <!-- END THIS PAGE PLUGINS -->
+    <!-- START TEMPLATE -->
+    <script type="text/javascript" src="~/Content/js/settings.js"></script>
+
+    <script type="text/javascript" src="~/Content/js/plugins.js"></script>
+    <script type="text/javascript" src="~/Content/js/actions.js"></script>
+    <link href="~/Content/enlaces.css" rel="stylesheet" />
+    <link href="~/Content/Efectos.css" rel="stylesheet" />
+    <!-- END TEMPLATE -->
+
+
+    <script src="~/Content/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+
+    <script src="~/Content/js/plugins/icheck/icheck.min.js"></script>
+
+    <script src="~/Content/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+    <script src="~/Content/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/js/plugins/tableexport/tableExport.js"></script>
+
+    <script src="~/Content/js/plugins/tableexport/jquery.base64.js"></script>
+
+    <script src="~/Content/js/plugins/tableexport/html2canvas.js"></script>
+    <script src="~/Content/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+    <script src="~/Content/js/plugins/tableexport/jspdf/jspdf.js"></script>
+    <script src="~/Content/js/plugins/tableexport/jspdf/libs/base64.js"></script>
+
+
+    <!-- END SCRIPTS -->
+    @RenderBody()
+</body>
+</html>
+
+
+

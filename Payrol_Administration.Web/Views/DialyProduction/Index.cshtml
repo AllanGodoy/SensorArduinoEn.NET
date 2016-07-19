@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link href="~/Scripts/datepicker/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/datepicker/jquery-ui.js"></script>
+<body>
+    <div class="page-container animated  fadeIn">
+        <div class="page-content">
+            <div class="page-title">
+                <h2><span class="fa fa-bars"></span>DAILY PRODUCTION</h2>
+            </div>
+
+            <div class="page-content-wrap">
+
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <!-- START DEFAULT DATATABLE -->
+                        <div class="panel panel-default" align="center">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">DAILY PRODUCTION REPORT</h3>
+
+                            </div>
+
+
+                            <div class="col-md-5 form-group-separated" align="center">
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label" align="center"><h4>ENTER START-DATE</h4></label>
+                                    <div class="col-md-6 col-xs-12 input-group">
+                                        <div class="form-group has-success">
+                                            @*<input id='date' name='date' type="date" class="form-control" data-val="true" />*@
+                                            <input data-provide="datepicker" id='date' name='date' class="form-control" readonly="" style="background-color:#ffffff;color:#000000;">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-md-2 form-group-separated" align="center" style="padding-top:10px;">
+
+                                <button type="submit" class="btn   btn-success btn-lg" id="search">Search</button>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div class="panel panel-default" align="center">
+
+                            <div id="tabla"></div>
+                        </div>
+
+
+                        <!-- END DEFAULT DATATABLE -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+
+
+    ////--------------------
+    $(document).ready(function () {
+        $('#date').datepicker({
+            beforeShowDay: function (day) {
+                var day = day.getDay();
+                if (day == 0 || day == 1 || day == 2 || day == 3 || day == 4 || day == 5 ) {
+                    return [false, "somecssclass"]
+                } else {
+                    return [true, "someothercssclass"]
+                }xxz
+            }
+        });
+    });
+
+
+
+    document.getElementById("search").addEventListener("click", function () {
+
+        var date = $('#date').val();
+
+        var URL = '../DialyProduction/table?date=' + date;
+
+        $.ajax({
+            url: URL,
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            datatype: 'html'
+        })
+        .success(function (result) {
+
+            $('#tabla').html(result);
+
+        })
+
+    });
+</script>

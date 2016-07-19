@@ -1,0 +1,47 @@
+//Create User=Admin@Admin.com with password=Admin@123456 in the Admin role   
+
+admin@example.com
+
+Admin@123456
+
+YarnRequestor 	This Group only can create Yarn Requests 	Edit | Details | Delete
+Supervisor 	This Group is for Knitting Supervisors 	Edit | Details | Delete
+Manager 	This Group is for Production Managers 	Edit | Details | Delete
+SuperAdmins 
+
+ Admin
+readKnittingProduction
+addYarnRequest
+readPAT
+readKnittingProductionChart 
+
+http://localhost:9320/SolicitudDeHilazas/Index
+http://localhost:9320/PAT/Index
+http://localhost:9320/ProductionChart/Index
+http://localhost:9320/KnittingProduction/Index
+
+
+    <div class="form-group">
+       @Html.Label("Upload Photo", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="file" class="fileinput" name="filename1" id="filename" />
+        </div>
+    </div>
+
+
+--------------------------------------------------obtener una imagen de la base de datos--------
+[AcceptVerbs(HttpVerbs.Post)]
+    public ActionResult Index(HttpPostedFileBase httpPostedFileBase)
+    {
+
+      byte [] bs = new byte[Request.Files[0].ContentLength] ;
+
+      Request.Files[0].InputStream.Read(bs, 0, Request.Files[0].ContentLength);
+     
+      string str = System.Text.Encoding.ASCII.GetString(bs);
+
+      ViewData["Message"] = "Here i will show u the data:"+ Request.Files[0].ContentLength+" <br>"+ str;
+      //return View(
+      return View();
+    }
+

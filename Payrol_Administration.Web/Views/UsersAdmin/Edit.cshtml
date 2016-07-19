@@ -1,0 +1,83 @@
+﻿@model IT_Help_Desk.Web.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="page-container animated  fadeIn">
+    <div class="page-content">
+
+        <div class="page-title">
+            <h2><span class="fa fa-asterisk"></span>@ViewBag.Title.</h2>
+        </div>
+
+        <div class="page-content-wrap">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- START DEFAULT DATATABLE -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@ViewBag.Message</h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <h4>Edit User Form.</h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(model => model.Id)
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("This User belongs to the following Groups", new { @class = "control-label col-md-2" })
+                                        <span class=" col-md-10">
+                                            @foreach (var item in Model.GroupsList)
+                                            {
+
+                                                <input type="checkbox" name="selectedGroups" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                                                @Html.Label(item.Text, new { @class = "control-label" })
+
+
+
+                                            }
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

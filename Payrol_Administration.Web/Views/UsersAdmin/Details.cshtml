@@ -1,0 +1,73 @@
+﻿@model IT_Help_Desk.Web.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="page-container animated  fadeIn">
+    <div class="page-content">
+
+        <div class="page-title">
+            <h2><span class="fa fa-asterisk"></span>@ViewBag.Title.</h2>
+        </div>
+
+        <div class="page-content-wrap">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- START DEFAULT DATATABLE -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@ViewBag.Title.</h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+
+                            <div>
+                                <h4>User</h4>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.UserName)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <h4>List ofGroups this user belongs to:</h4>
+                            @if (ViewBag.GroupNames.Count == 0)
+                            {
+                                <hr />
+                                <p>No GRoups found for this user.</p>
+                            }
+                            <table class="table">
+                                @foreach (var item in ViewBag.GroupNames)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

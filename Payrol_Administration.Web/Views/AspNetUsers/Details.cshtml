@@ -1,0 +1,65 @@
+﻿@model Payrol_Administration.Web.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Payrol_Administration.Web.Models.AspNetUser> Lista = ViewBag.List;
+}
+<div class="page-container animated  fadeIn">
+    <div class="page-content">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2>Details</h2>
+
+                <div>
+                    <h4>AspNetUser</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        @*<dt>
+
+                                @Html.DisplayNameFor(model => model.Email)
+                            </dt>*@
+                        <dt>
+                            @Html.DisplayFor(modelItem => modelItem.UserName)
+                        </dt>
+
+
+                        @*<dt>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </dt>*@
+
+                        <dd>
+                            <table>
+
+                                @{
+                                    int j = 0;
+                                    for (int i = 0; i < Lista.Count(); i += 4)
+                                    {
+                                        j = i;
+                                        <tr>
+                                            @* I have done this for show 4 images in  a Row *@
+                                            @while (j < i + 4 && j < Lista.Count())
+                                            {
+                                                <td>
+                                                    <img src="data:image/png;base64,@Convert.ToBase64String(Lista[j].Photo,0,Lista[j].Photo.Length)" width="300" />
+                                                </td>
+                                                j++;
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                            @*@Html.DisplayFor(model => model.Photo)*@
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

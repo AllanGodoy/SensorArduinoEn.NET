@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Payrol_Administration.Web.Models.RPM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.diametro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.galga)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.agujas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.alimentadores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rollo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rpm1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estadoActual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nota)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.diametro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.galga)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.agujas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.alimentadores)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rollo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rpm1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estadoActual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nota)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maquina }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maquina }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maquina })
+        </td>
+    </tr>
+}
+
+</table>
