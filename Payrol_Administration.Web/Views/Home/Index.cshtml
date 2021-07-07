@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<link href="~/Content/Efectos.css" rel="stylesheet" />
+<link href="~/Content/css/Slider/slider.css" rel="stylesheet" />
 
 <div class="page-container">
     <div class="page-content">
@@ -9,27 +9,162 @@
 
             @*-------------------------Content------------------------------------------*@
             <div class="col-md-9 animated  fadeIn">
-                <div class="panel panel-default ">
+                <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="panel-heading">
-                            <h2 class="panel-title"><b><i>Universidad Tecnologica de Honduras</i></b></h2>
-                        </div>
-                        <p align=center> <img src="~/Content/img/UTHLogo/UTH.png"  height="300" width="400"></p>
+                        @*<div class="panel-heading">
+                            <h2 class="panel-title"><b><i>MY TICKET GO</i></b></h2>
+                        
+                        </div>*@
+                        <p align=center> <img src="~/Content/img/SIMCPREC.jpg" height="0" width="0"></p>
+                        <div id="slider"></div>
                         <fieldset>
-                            <legend><h2><b>Mission</b></h2></legend>
-                            <h3 align=center><i><u>Mission</u></i></h3>
-                            <h5>
-                                We are a service department responsible for administering, securing and ensuring the integrity of the company’s data. We are committed to continuous learning so we may actively offer technological innovative solutions in both software and hardware to our customers with the goal of providing them the most efficient and effective tools for them to optimize their productivity. We comply with all applicable legal requirements and internal policies.
+                            @*<legend><h3><b><i>Objetivos</i></b></h3></legend>*@
+                           @* <h2 align=center><i><u>Objetivos</u></i></h2>*@
+                            @*------------------------------------------*@
+                            @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                            <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">*@
+
+                            <div id="first-slider">
+                                <div id="carousel-example-generic" class="carousel slide carousel-fade">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                    </ol>
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <!-- Item 1 -->
+                                        <div class="item active slide1">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="col-md-6 text-left">
+                                                        <h3 data-animation="animated bounceInDown"> SIMCPREC es una aplicacion Online creada para</h3>
+                                                        <h4 data-animation="animated bounceInUp">facilitar el control del flujo de caudal.</h4>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        @*<img style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/pfmmo6qj1/window_domain.png">*@
+                                                        @*<img style="max-width: 200px;" data-animation="animated zoomInLeft" src="~/Content/Slide/slide1.jpg">*@
+
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Item 2 -->
+                                        <div class="item slide2">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="col-md-6 text-left">
+                                                        <h3 data-animation="animated bounceInDown">SIMCPREC</h3>
+                                                        <h4 data-animation="animated bounceInUp">Tener control en cualquier parte del mundo</h4>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        @*<img style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/sp11uneml/rack_server_unlock.png">*@
+                                                       
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Item 3 -->
+                                        <div class="item slide3">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="col-md-6 text-left">
+                                                        <h3 data-animation="animated bounceInDown">Poder acceder a SIMCPREC </h3>
+                                                        <h4 data-animation="animated bounceInUp">Desde la comodidad de su oficina.</h4>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        @*<img style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/eq8xvxeq5/globe_network.png">*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Item 4 -->
+                                        <div class="item slide4">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="col-md-6 text-left">
+                                                        <h3 data-animation="animated bounceInDown"> My Ticket Go nos ayuda a reducir costos</h3>
+                                                        <h4 data-animation="animated bounceInUp">Podemos acceder desde nuestros dispositivos móviles.</h4>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        @*<img style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/9vf8xngel/internet_speed.png">*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Item 4 -->
+
+                                    </div>
+                                    <!-- End Wrapper for slides-->
+                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                        <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                        <i class="fa fa-angle-right"></i><span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <footer>
+                                <div class="container">
+                                    <div class="col-md-10 col-md-offset-1 text-center">
+
+                                        @*<h6>Coded with <i class="fa fa-heart red" style="color: #BC0213;"></i> by <a href="http://hashif.com" target="_blank">Hashif</a></h6>*@
+                                    </div>
+                                </div>
+                            </footer>
+
+
+
+                            @*------------------------------------------*@
+
+
+                                @*<h5 align=center><b>
+                                    My Ticket Go es una herramienta creada para facilitar el trabajo del personal técnico.
+                                    </b><br><br /><br><br />
+                                </h5>*@
+                                @*<h5 align=center><b>
+                                    Poder acceder a My Ticket Go en cualquier momento, desde cualquier lugar.
+                                    </b><br><br /><br><br />
+                                </h5>*@
+                                @*<h5 align=center><b>
+                                    My Ticket Go, hace más fácil la localización de los clientes, ya que tiene localización mediante georreferencia.
+                                    </b><br><br /><br><br />
+                                </h5>*@
+                                @*<h5 align=center><b>
+                                    My Ticket Go nos ayuda a reducir costos ya que no es necesario tener una estación de trabajo para cada cliente. Podemos acceder desde nuestros dispositivos móviles.
+                                    </b>
+                                    <br><br /><br><br />
+                                </h5>*@
+                            <h5 align=center>
+                                <b>
+                                 </b>
                                 <br><br /><br><br />
                             </h5>
+                                
                         </fieldset>
 
                         <fieldset>
-                            <legend><h2><b>Misión</b></h2></legend>
-                            <h3 align=center><i><u>Misión</u></i></h3>
-                            <h5>
-                                Somos un departamento de servicio encargado de administrar la información, garantizar la integridad de la misma, permanecer a la vanguardia de la tecnología y conocimientos necesarios para promover , proporcionar e implementar mejoras continuas en el Software y Hardware , cubriendo así las necesidades de nuestros clientes internos y externos, en compromiso con el cumplimiento de las leyes políticas internas aplicadas a nuestro ámbito.
+                            <legend><h3><b><i>Asignatura</i></b></h3></legend>
+                            <h5 align=center>
+                                <b>
+                                   Lenguaje Maquina Ensamblador</b>
                             </h5>
+                            <h5 align=center>
+                                <b>
+                                Catedratico: Jorge Bargas
+                                     </b>
+                                <br><br /><br><br />
+                            </h5>
+                            @*<h3 align=center><i><u>Departamento de Sistemas</u></i></h3>*@
+                            @*<h5>
+                                Somos un departamento de servicio encargado de administrar la información, garantizar la integridad de la misma, permanecer a la vanguardia de la tecnología y conocimientos necesarios para promover , proporcionar e implementar mejoras continuas en el Software y Hardware , cubriendo así las necesidades de nuestros clientes internos y externos, en compromiso con el cumplimiento de las leyes políticas internas aplicadas a nuestro ámbito.
+                            </h5>*@
                         </fieldset>
 
                     </div>
@@ -39,13 +174,8 @@
             @*-------------------------Whatch-----------------------------------------*@
             <div class="col-md-3 animated  fadeIn">
                 <div class="widget widget-default widget-padding-sm">
-                    <div class="widget-big-int plugin-clock">
-                        13<span></span>51
-                    </div>
-                    <div class="widget-subtitle plugin-date">
-                        Friday, July 10, 2015
-                    </div>
-                    <div class="widget-controls"></div>
+                    
+                    <div class="widget-controls"></div><p align=center> <img src="~/Content/img/UTHLogo/UTH.png" height="100" width="130"></p>
                 </div>
             </div>
 
@@ -60,43 +190,57 @@
                 <div class="panel-body list-group list-group-contacts">
 
 
-                    <a href="#" class="list-group-item">
-                        @*<div class="list-group-status status-online"></div>*@
+                    @*<a href="#" class="list-group-item">
+                        <div class="list-group-status status-online"></div>
                         <img src="~/Content/assets/images/users/Fernando.jpg" class="pull-left" alt="Fernando Rivera" />
                         <span class="contacts-title">Fernando Rivera</span>
                         <p>IT Manager</p>
                         <p align=center>Ext: 2009</p>
                         <p align=center>Mail : frivera@simtex-international.com</p>
-                        @*<div class="list-group-controls">
+                        <div class="list-group-controls">
                             <button class="btn btn-success"><span class="fa fa-phone"></span></button>
-                        </div>*@
-                    </a>
+                        </div>
+                    </a>*@
                     <a href="#" class="list-group-item">
-                        @*<div class="list-group-status status-online"></div>*@
-                        <img src="~/Content/assets/images/users/Allan2.jpg" class="pull-left" alt="Allan Godoy" />
+                        <div class="list-group-status status-online"></div>
+                        <img src="~/Content/assets/images/users/AllanGodoy.jpg" class="pull-left" alt="Allan Godoy" />
                         <span class="contacts-title">Allan Godoy</span>
-                        <p>Web Developer Jr.</p>
-                        <p align=center>Ext : 2010</p>
-                        <p align=center>Mail : agodoy@simtex-international.com</p>
-                        @*<div class="list-group-controls">
-                            <button class="btn btn-success"><span class="fa fa-phone"></span></button>
-                        </div>*@
+                        <p>241051099</p>
+                      
                     </a>
-
                     <a href="#" class="list-group-item">
-                        @*<div class="list-group-status status-online"></div>*@
-                        <img src="~/Content/assets/images/users/Willians.png" class="pull-left" alt="Willians morales" />
-                        <span class="contacts-title">Willians Morales</span>
-                        <p>IT Support</p>
-                        <p align=center>Ext : 2010</p>
-                        <p align=center>Mail : wmorales@simtex-international.com</p>
-                        @*<div class="list-group-controls">
-                            <button class="btn btn-success"><span class="fa fa-phone"></span></button>
-                        </div>*@
+                        <div class="list-group-status status-online"></div>
+                        <img src="~/Content/assets/images/users/Esmy.jpeg" class="pull-left" alt="Jairo Espinoza" />
+                        <span class="contacts-title">Esmy Pineda</span>
+                        <p>201130010154</p>
+
                     </a>
+                    <a href="#" class="list-group-item">
+                        <div class="list-group-status status-online"></div>
+                        <img src="~/Content/assets/images/users/EduardoFigueroa.jpg" class="pull-left" alt="Allan Godoy" />
+                        <span class="contacts-title">Eduardo Figueroa</span>
+                        <p>200611410038</p>
+
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <div class="list-group-status status-online"></div>
+                         <img src="~/Content/assets/images/users/Nora.jpeg" class="pull-left" alt="Allan Godoy" />
+                        <span class="contacts-title">Nora Mercado</span>
+                        <p>201410010608</p>
+
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <div class="list-group-status status-online"></div>
+                        <img src="~/Content/assets/images/users/Javier.jpeg" class="pull-left" alt="Allan Godoy" />
+                        <span class="contacts-title">Javier Aragon</span>
+                        <p>201210010112</p>
+
+                    </a>    
                 </div>
             </div>
             @*------------------------------------------------------------*@
         </div>
     </div>
 </div>
+
+<script src="~/Content/css/Slider/slider.js"></script>

@@ -1,0 +1,3003 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAI_CableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacenes">
+          <Key>
+            <PropertyRef Name="AlmacenID" />
+          </Key>
+          <Property Name="AlmacenID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="BancoID" />
+          </Key>
+          <Property Name="BancoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BarrioColonias">
+          <Key>
+            <PropertyRef Name="BarrioColoniaID" />
+          </Key>
+          <Property Name="BarrioColoniaID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MunicipioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CajaCobros">
+          <Key>
+            <PropertyRef Name="CajaCobroId" />
+          </Key>
+          <Property Name="CajaCobroId" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="OficinaId" Type="int" Nullable="false" />
+          <Property Name="Correlativo" Type="int" Nullable="false" />
+          <Property Name="MAC" Type="varchar" MaxLength="14" />
+          <Property Name="Disponible" Type="bit" />
+          <Property Name="CobradorID" Type="int" />
+        </EntityType>
+        <EntityType Name="CallAve">
+          <Key>
+            <PropertyRef Name="CallAveID" />
+          </Key>
+          <Property Name="CallAveID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MunicipioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CallAvePas">
+          <Key>
+            <PropertyRef Name="CallAvePasID" />
+          </Key>
+          <Property Name="CallAvePasID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="BarrioColoniaID" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" />
+          <Property Name="Nombres" Type="varchar" MaxLength="40" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="40" />
+          <Property Name="Identidad" Type="varchar" MaxLength="15" />
+          <Property Name="EstadoId" Type="int" />
+          <Property Name="PosteID" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="ClaveUbicacion" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono1ID" Type="int" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono2ID" Type="int" />
+          <Property Name="Telefono3" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono3ID" Type="int" />
+          <Property Name="Empresa" Type="varchar" MaxLength="30" />
+          <Property Name="DireccionTrabajo" Type="varchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="TerceraEdad" Type="bit" />
+          <Property Name="CiudadTrabajoID" Type="int" />
+          <Property Name="NodoId" Type="int" />
+          <Property Name="BarrioColoniaID" Type="int" />
+          <Property Name="Latitud" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cobradores">
+          <Key>
+            <PropertyRef Name="CobradorID" />
+          </Key>
+          <Property Name="CobradorID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Comision" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="ClaveCaja" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Cobros">
+          <Key>
+            <PropertyRef Name="CobroID" />
+          </Key>
+          <Property Name="CobroID" Type="int" Nullable="false" />
+          <Property Name="CajaCobroID" Type="int" Nullable="false" />
+          <Property Name="CobradorID" Type="int" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Digitado" Type="datetime" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="TipoCobroID" Type="int" Nullable="false" />
+          <Property Name="BancoID" Type="int" />
+          <Property Name="Valor" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CobrosDet">
+          <Key>
+            <PropertyRef Name="CajaCobroID" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Periodo" />
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="CobroID" Type="int" Nullable="false" />
+          <Property Name="CajaCobroID" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="ContratoID" Type="int" Nullable="false" />
+          <Property Name="TarifaID" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Recargo" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="ConfiguracionID" />
+          </Key>
+          <Property Name="ConfiguracionID" Type="int" Nullable="false" />
+          <Property Name="Dia_Corte" Type="int" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="RTN_Alfa" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RTN_Num" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContratoDet">
+          <Key>
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="ContratoID" Type="int" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="TarifaID" Type="int" Nullable="false" />
+          <Property Name="EstadoID" Type="int" Nullable="false" />
+          <Property Name="Conexiones" Type="int" />
+          <Property Name="Serie" Type="varchar" MaxLength="40" />
+          <Property Name="MAC" Type="varchar" MaxLength="14" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Contratos">
+          <Key>
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ContratoID" Type="int" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EstadoID" Type="int" Nullable="false" />
+          <Property Name="Fch_Contrato" Type="date" />
+          <Property Name="Fch_Instalacion" Type="date" />
+          <Property Name="Fch_Corte" Type="date" />
+          <Property Name="VendedorID" Type="int" />
+          <Property Name="TecnicoID" Type="int" />
+          <Property Name="PosteID" Type="int" />
+          <Property Name="NodoID" Type="int" />
+          <Property Name="Casa" Type="varchar" MaxLength="15" />
+          <Property Name="Bloque" Type="varchar" MaxLength="15" />
+          <Property Name="ClaveUbicacion" Type="varchar" MaxLength="15" />
+          <Property Name="Referencia" Type="varchar" MaxLength="40" />
+          <Property Name="Obs" Type="varchar" MaxLength="40" />
+          <Property Name="BarrioColoniaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="PaisID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetMateriales">
+          <Key>
+            <PropertyRef Name="DetMaterialesID" />
+          </Key>
+          <Property Name="DetMaterialesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrdenID" Type="int" />
+          <Property Name="MaterialID" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Observacion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Facturar" Type="bit" />
+        </EntityType>
+        <EntityType Name="Estatus">
+          <Key>
+            <PropertyRef Name="EstatusID" />
+          </Key>
+          <Property Name="EstatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionEstatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="TarifaID" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="ContratoID" Type="int" Nullable="false" />
+          <Property Name="TarifaID" Type="int" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fallas">
+          <Key>
+            <PropertyRef Name="FallaID" />
+          </Key>
+          <Property Name="FallaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lineas">
+          <Key>
+            <PropertyRef Name="LineaID" />
+          </Key>
+          <Property Name="LineaID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="UnidadID" Type="int" />
+        </EntityType>
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="MunicipioID" />
+          </Key>
+          <Property Name="MunicipioID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DepartamentoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nodos">
+          <Key>
+            <PropertyRef Name="NodoID" />
+          </Key>
+          <Property Name="NodoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="BarrioColoniaid" Type="int" Nullable="false" />
+          <Property Name="HP" Type="int" />
+        </EntityType>
+        <EntityType Name="Oficinas">
+          <Key>
+            <PropertyRef Name="OficinaID" />
+          </Key>
+          <Property Name="OficinaID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="MunicipioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajo">
+          <Key>
+            <PropertyRef Name="OrdenID" />
+          </Key>
+          <Property Name="OrdenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" />
+          <Property Name="ClienteID" Type="int" />
+          <Property Name="FallaID" Type="int" />
+          <Property Name="DescripcionFalla" Type="varchar" MaxLength="100" />
+          <Property Name="EmpleadoID" Type="int" />
+          <Property Name="TecnicoID" Type="int" />
+          <Property Name="EstatusID" Type="int" />
+          <Property Name="Fch_Creacion" Type="date" />
+          <Property Name="Fch_Cierre" Type="date" />
+          <Property Name="AlmacenInID" Type="int" />
+          <Property Name="DescripcionSolucion" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAI_Cable.dbo.OrdenesTrabajoDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OrdenesTrabajoDet">
+          <Key>
+            <PropertyRef Name="OrdenID" />
+            <PropertyRef Name="ProductoID" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="OrdenID" Type="int" Nullable="false" />
+          <Property Name="ProductoID" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="PaisID" />
+          </Key>
+          <Property Name="PaisID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Postes">
+          <Key>
+            <PropertyRef Name="PosteID" />
+          </Key>
+          <Property Name="PosteID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="BarrioColoniaID" Type="int" Nullable="false" />
+          <Property Name="CallAveID" Type="int" />
+          <Property Name="CallAvePasID" Type="int" />
+          <Property Name="NodoID" Type="int" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LineaID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="ServicioID" />
+          </Key>
+          <Property Name="ServicioID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Recargo" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CableB" Type="bit" />
+          <Property Name="CableD" Type="bit" />
+          <Property Name="Internet" Type="bit" />
+          <Property Name="Telefonia" Type="bit" />
+        </EntityType>
+        <EntityType Name="Soluciones">
+          <Key>
+            <PropertyRef Name="SolucionID" />
+          </Key>
+          <Property Name="SolucionID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarifas">
+          <Key>
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="TarifaID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="ServicioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tecnicos">
+          <Key>
+            <PropertyRef Name="TecnicoID" />
+          </Key>
+          <Property Name="TecnicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TelefonoTipo">
+          <Key>
+            <PropertyRef Name="TelefonoID" />
+          </Key>
+          <Property Name="TelefonoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCobros">
+          <Key>
+            <PropertyRef Name="TipoCobroID" />
+          </Key>
+          <Property Name="TipoCobroID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimientos">
+          <Key>
+            <PropertyRef Name="TipoMovimientoID" />
+          </Key>
+          <Property Name="TipoMovimientoID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unidad">
+          <Key>
+            <PropertyRef Name="UnidadID" />
+          </Key>
+          <Property Name="UnidadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="VendedorID" />
+          </Key>
+          <Property Name="VendedorID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Comision" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <Association Name="FK_DetMateriales_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="DetMateriales" Type="Self.DetMateriales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="DetMateriales">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetMateriales_OrdenesTrabajo">
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="0..1" />
+          <End Role="DetMateriales" Type="Self.DetMateriales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesTrabajo">
+              <PropertyRef Name="OrdenID" />
+            </Principal>
+            <Dependent Role="DetMateriales">
+              <PropertyRef Name="OrdenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Unidad">
+          <End Role="Unidad" Type="Self.Unidad" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidad">
+              <PropertyRef Name="UnidadID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="UnidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesTrabajo_Estatus">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="EstatusID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="EstatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesTrabajo_Tecnicos">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="TecnicoID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="TecnicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkBarrio">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="BarrioColonias">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCajaCobrador">
+          <End Role="Cobradores" Type="Self.Cobradores" Multiplicity="0..1" />
+          <End Role="CajaCobros" Type="Self.CajaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="CobradorID" />
+            </Principal>
+            <Dependent Role="CajaCobros">
+              <PropertyRef Name="CobradorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCajaOficina">
+          <End Role="Oficinas" Type="Self.Oficinas" Multiplicity="1" />
+          <End Role="CajaCobros" Type="Self.CajaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oficinas">
+              <PropertyRef Name="OficinaID" />
+            </Principal>
+            <Dependent Role="CajaCobros">
+              <PropertyRef Name="OficinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCallAve">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
+          <End Role="CallAve" Type="Self.CallAve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="CallAve">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCallAveCol">
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="1" />
+          <End Role="CallAvePas" Type="Self.CallAvePas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="CallAvePas">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesBarrio">
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesEstado">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="EstadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesMun">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="CiudadTrabajoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesNodo">
+          <End Role="Nodos" Type="Self.Nodos" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodos">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="NodoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesPostes">
+          <End Role="Postes" Type="Self.Postes" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postes">
+              <PropertyRef Name="PosteID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="PosteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesTelf3">
+          <End Role="TelefonoTipo" Type="Self.TelefonoTipo" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TelefonoTipo">
+              <PropertyRef Name="TelefonoID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Telefono3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosBanco">
+          <End Role="Bancos" Type="Self.Bancos" Multiplicity="0..1" />
+          <End Role="Cobros" Type="Self.Cobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="BancoID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosCaja">
+          <End Role="CajaCobros" Type="Self.CajaCobros" Multiplicity="1" />
+          <End Role="Cobros" Type="Self.Cobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CajaCobros">
+              <PropertyRef Name="CajaCobroId" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="CajaCobroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosClie">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cobros" Type="Self.Cobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosCobrador">
+          <End Role="Cobradores" Type="Self.Cobradores" Multiplicity="0..1" />
+          <End Role="Cobros" Type="Self.Cobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="CobradorID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="CobradorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosTipo">
+          <End Role="TipoCobros" Type="Self.TipoCobros" Multiplicity="1" />
+          <End Role="Cobros" Type="Self.Cobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCobros">
+              <PropertyRef Name="TipoCobroID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="TipoCobroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoDet">
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoEstado">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosBarrio">
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosClientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosEstados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontratosNodos">
+          <End Role="Nodos" Type="Self.Nodos" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodos">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="NodoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosPostes">
+          <End Role="Postes" Type="Self.Postes" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postes">
+              <PropertyRef Name="PosteID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="PosteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosTecnicos">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="TecnicoID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="TecnicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosVendedores">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="VendedorID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoTarifa">
+          <End Role="Tarifas" Type="Self.Tarifas" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarifas">
+              <PropertyRef Name="TarifaID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="TarifaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkDepPais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="PaisID" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="PaisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFacturaCliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFacturaContrato">
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContratoDet">
+              <PropertyRef Name="ClienteID" />
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="TarifaID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="ClienteID" />
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="TarifaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkMunDep">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="Municipios">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkNodosBarr">
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="1" />
+          <End Role="Nodos" Type="Self.Nodos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Nodos">
+              <PropertyRef Name="BarrioColoniaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOficinaMun">
+          <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
+          <End Role="Oficinas" Type="Self.Oficinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="Oficinas">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrdenesClientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrdenesFallas">
+          <End Role="Fallas" Type="Self.Fallas" Multiplicity="0..1" />
+          <End Role="OrdenesTrabajo" Type="Self.OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fallas">
+              <PropertyRef Name="FallaID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="FallaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesCallAve">
+          <End Role="CallAve" Type="Self.CallAve" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Postes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallAve">
+              <PropertyRef Name="CallAveID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="CallAveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesCallAvePas">
+          <End Role="CallAvePas" Type="Self.CallAvePas" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Postes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallAvePas">
+              <PropertyRef Name="CallAvePasID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="CallAvePasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesColonia">
+          <End Role="BarrioColonias" Type="Self.BarrioColonias" Multiplicity="1" />
+          <End Role="Postes" Type="Self.Postes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesNodos">
+          <End Role="Nodos" Type="Self.Nodos" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Postes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodos">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="NodoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkTarifaServicio">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="Tarifas" Type="Self.Tarifas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="ServicioID" />
+            </Principal>
+            <Dependent Role="Tarifas">
+              <PropertyRef Name="ServicioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="agregarmaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrdenID" Type="int" Mode="In" />
+          <Parameter Name="Material" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Observacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="cambiacoordenadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clienteID" Type="int" Mode="In" />
+          <Parameter Name="latitude" Type="varchar" Mode="In" />
+          <Parameter Name="longitude" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EliminarOrdenDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrdenID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModificaOrden" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrdenID" Type="int" Mode="In" />
+          <Parameter Name="EstatusID" Type="int" Mode="In" />
+          <Parameter Name="DescripcionSolucion" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SAI_CableModelStoreContainer">
+          <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BarrioColonias" EntityType="Self.BarrioColonias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaCobros" EntityType="Self.CajaCobros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CallAve" EntityType="Self.CallAve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CallAvePas" EntityType="Self.CallAvePas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cobradores" EntityType="Self.Cobradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cobros" EntityType="Self.Cobros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CobrosDet" EntityType="Self.CobrosDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContratoDet" EntityType="Self.ContratoDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contratos" EntityType="Self.Contratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetMateriales" EntityType="Self.DetMateriales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fallas" EntityType="Self.Fallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nodos" EntityType="Self.Nodos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oficinas" EntityType="Self.Oficinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenesTrabajo" EntityType="Self.OrdenesTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postes" EntityType="Self.Postes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soluciones" EntityType="Self.Soluciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarifas" EntityType="Self.Tarifas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tecnicos" EntityType="Self.Tecnicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TelefonoTipo" EntityType="Self.TelefonoTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCobros" EntityType="Self.TipoCobros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unidad" EntityType="Self.Unidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenesTrabajoDet" EntityType="Self.OrdenesTrabajoDet" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrdenesTrabajoDet].[OrdenID] AS [OrdenID], 
+    [OrdenesTrabajoDet].[ProductoID] AS [ProductoID], 
+    [OrdenesTrabajoDet].[Cantidad] AS [Cantidad], 
+    [OrdenesTrabajoDet].[Costo] AS [Costo], 
+    [OrdenesTrabajoDet].[Valor] AS [Valor], 
+    [OrdenesTrabajoDet].[Total] AS [Total]
+    FROM [dbo].[OrdenesTrabajoDet] AS [OrdenesTrabajoDet]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DetMateriales_Material" Association="Self.FK_DetMateriales_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DetMateriales" EntitySet="DetMateriales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetMateriales_OrdenesTrabajo" Association="Self.FK_DetMateriales_OrdenesTrabajo">
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+            <End Role="DetMateriales" EntitySet="DetMateriales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Unidad" Association="Self.FK_Material_Unidad">
+            <End Role="Unidad" EntitySet="Unidad" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesTrabajo_Estatus" Association="Self.FK_OrdenesTrabajo_Estatus">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesTrabajo_Tecnicos" Association="Self.FK_OrdenesTrabajo_Tecnicos">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="fkBarrio" Association="Self.fkBarrio">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+          </AssociationSet>
+          <AssociationSet Name="fkCajaCobrador" Association="Self.fkCajaCobrador">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCajaOficina" Association="Self.fkCajaOficina">
+            <End Role="Oficinas" EntitySet="Oficinas" />
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCallAve" Association="Self.fkCallAve">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="CallAve" EntitySet="CallAve" />
+          </AssociationSet>
+          <AssociationSet Name="fkCallAveCol" Association="Self.fkCallAveCol">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="CallAvePas" EntitySet="CallAvePas" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesBarrio" Association="Self.fkClientesBarrio">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesEstado" Association="Self.fkClientesEstado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesMun" Association="Self.fkClientesMun">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesNodo" Association="Self.fkClientesNodo">
+            <End Role="Nodos" EntitySet="Nodos" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesPostes" Association="Self.fkClientesPostes">
+            <End Role="Postes" EntitySet="Postes" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesTelf3" Association="Self.fkClientesTelf3">
+            <End Role="TelefonoTipo" EntitySet="TelefonoTipo" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosBanco" Association="Self.fkCobrosBanco">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosCaja" Association="Self.fkCobrosCaja">
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosClie" Association="Self.fkCobrosClie">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosCobrador" Association="Self.fkCobrosCobrador">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosTipo" Association="Self.fkCobrosTipo">
+            <End Role="TipoCobros" EntitySet="TipoCobros" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoDet" Association="Self.fkContratoDet">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="ContratoDet" EntitySet="ContratoDet" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoEstado" Association="Self.fkContratoEstado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ContratoDet" EntitySet="ContratoDet" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosBarrio" Association="Self.fkContratosBarrio">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosClientes" Association="Self.fkContratosClientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosEstados" Association="Self.fkContratosEstados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontratosNodos" Association="Self.fkcontratosNodos">
+            <End Role="Nodos" EntitySet="Nodos" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosPostes" Association="Self.fkContratosPostes">
+            <End Role="Postes" EntitySet="Postes" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosTecnicos" Association="Self.fkContratosTecnicos">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosVendedores" Association="Self.fkContratosVendedores">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoTarifa" Association="Self.fkContratoTarifa">
+            <End Role="Tarifas" EntitySet="Tarifas" />
+            <End Role="ContratoDet" EntitySet="ContratoDet" />
+          </AssociationSet>
+          <AssociationSet Name="fkDepPais" Association="Self.fkDepPais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamentos" EntitySet="Departamentos" />
+          </AssociationSet>
+          <AssociationSet Name="fkFacturaCliente" Association="Self.fkFacturaCliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="fkFacturaContrato" Association="Self.fkFacturaContrato">
+            <End Role="ContratoDet" EntitySet="ContratoDet" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="fkMunDep" Association="Self.fkMunDep">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Municipios" EntitySet="Municipios" />
+          </AssociationSet>
+          <AssociationSet Name="fkNodosBarr" Association="Self.fkNodosBarr">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Nodos" EntitySet="Nodos" />
+          </AssociationSet>
+          <AssociationSet Name="fkOficinaMun" Association="Self.fkOficinaMun">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="Oficinas" EntitySet="Oficinas" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrdenesClientes" Association="Self.fkOrdenesClientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrdenesFallas" Association="Self.fkOrdenesFallas">
+            <End Role="Fallas" EntitySet="Fallas" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesCallAve" Association="Self.fkPostesCallAve">
+            <End Role="CallAve" EntitySet="CallAve" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesCallAvePas" Association="Self.fkPostesCallAvePas">
+            <End Role="CallAvePas" EntitySet="CallAvePas" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesColonia" Association="Self.fkPostesColonia">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesNodos" Association="Self.fkPostesNodos">
+            <End Role="Nodos" EntitySet="Nodos" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkTarifaServicio" Association="Self.fkTarifaServicio">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Tarifas" EntitySet="Tarifas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAI_CableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Almacene">
+          <Key>
+            <PropertyRef Name="AlmacenID" />
+          </Key>
+          <Property Name="AlmacenID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="BancoID" />
+          </Key>
+          <Property Name="BancoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cobros" Relationship="Self.fkCobrosBanco" FromRole="Bancos" ToRole="Cobros" />
+        </EntityType>
+        <EntityType Name="BarrioColonia">
+          <Key>
+            <PropertyRef Name="BarrioColoniaID" />
+          </Key>
+          <Property Name="BarrioColoniaID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MunicipioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Municipio" Relationship="Self.fkBarrio" FromRole="BarrioColonias" ToRole="Municipios" />
+          <NavigationProperty Name="CallAvePas" Relationship="Self.fkCallAveCol" FromRole="BarrioColonias" ToRole="CallAvePas" />
+          <NavigationProperty Name="Contratos" Relationship="Self.fkContratosBarrio" FromRole="BarrioColonias" ToRole="Contratos" />
+          <NavigationProperty Name="Nodos" Relationship="Self.fkNodosBarr" FromRole="BarrioColonias" ToRole="Nodos" />
+          <NavigationProperty Name="Postes" Relationship="Self.fkPostesColonia" FromRole="BarrioColonias" ToRole="Postes" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesBarrio" FromRole="BarrioColonia" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="CajaCobro">
+          <Key>
+            <PropertyRef Name="CajaCobroId" />
+          </Key>
+          <Property Name="CajaCobroId" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OficinaId" Type="Int32" Nullable="false" />
+          <Property Name="Correlativo" Type="Int32" Nullable="false" />
+          <Property Name="MAC" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Disponible" Type="Boolean" />
+          <Property Name="CobradorID" Type="Int32" />
+          <NavigationProperty Name="Cobradore" Relationship="Self.fkCajaCobrador" FromRole="CajaCobros" ToRole="Cobradores" />
+          <NavigationProperty Name="Oficina" Relationship="Self.fkCajaOficina" FromRole="CajaCobros" ToRole="Oficinas" />
+          <NavigationProperty Name="Cobros" Relationship="Self.fkCobrosCaja" FromRole="CajaCobros" ToRole="Cobros" />
+        </EntityType>
+        <EntityType Name="CallAve">
+          <Key>
+            <PropertyRef Name="CallAveID" />
+          </Key>
+          <Property Name="CallAveID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MunicipioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Municipio" Relationship="Self.fkCallAve" FromRole="CallAve" ToRole="Municipios" />
+          <NavigationProperty Name="Postes" Relationship="Self.fkPostesCallAve" FromRole="CallAve" ToRole="Postes" />
+        </EntityType>
+        <EntityType Name="CallAvePa">
+          <Key>
+            <PropertyRef Name="CallAvePasID" />
+          </Key>
+          <Property Name="CallAvePasID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BarrioColoniaID" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BarrioColonia" Relationship="Self.fkCallAveCol" FromRole="CallAvePas" ToRole="BarrioColonias" />
+          <NavigationProperty Name="Postes" Relationship="Self.fkPostesCallAvePas" FromRole="CallAvePas" ToRole="Postes" />
+        </EntityType>
+        <EntityType Name="Cobradore">
+          <Key>
+            <PropertyRef Name="CobradorID" />
+          </Key>
+          <Property Name="CobradorID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comision" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="ClaveCaja" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CajaCobros" Relationship="Self.fkCajaCobrador" FromRole="Cobradores" ToRole="CajaCobros" />
+          <NavigationProperty Name="Cobros" Relationship="Self.fkCobrosCobrador" FromRole="Cobradores" ToRole="Cobros" />
+        </EntityType>
+        <EntityType Name="Cobro">
+          <Key>
+            <PropertyRef Name="CobroID" />
+          </Key>
+          <Property Name="CobroID" Type="Int32" Nullable="false" />
+          <Property Name="CajaCobroID" Type="Int32" Nullable="false" />
+          <Property Name="CobradorID" Type="Int32" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Digitado" Type="DateTime" Precision="3" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="TipoCobroID" Type="Int32" Nullable="false" />
+          <Property Name="BancoID" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Banco" Relationship="Self.fkCobrosBanco" FromRole="Cobros" ToRole="Bancos" />
+          <NavigationProperty Name="CajaCobro" Relationship="Self.fkCobrosCaja" FromRole="Cobros" ToRole="CajaCobros" />
+          <NavigationProperty Name="Cobradore" Relationship="Self.fkCobrosCobrador" FromRole="Cobros" ToRole="Cobradores" />
+          <NavigationProperty Name="TipoCobro" Relationship="Self.fkCobrosTipo" FromRole="Cobros" ToRole="TipoCobros" />
+          <NavigationProperty Name="Cliente" Relationship="SAI_CableModel.fkCobrosClie" FromRole="Cobro" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="CobrosDet">
+          <Key>
+            <PropertyRef Name="CajaCobroID" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Periodo" />
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="CobroID" Type="Int32" Nullable="false" />
+          <Property Name="CajaCobroID" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="ContratoID" Type="Int32" Nullable="false" />
+          <Property Name="TarifaID" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Recargo" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="ConfiguracionID" />
+          </Key>
+          <Property Name="ConfiguracionID" Type="Int32" Nullable="false" />
+          <Property Name="Dia_Corte" Type="Int32" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RTN_Alfa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RTN_Num" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContratoDet">
+          <Key>
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="ContratoID" Type="Int32" Nullable="false" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="TarifaID" Type="Int32" Nullable="false" />
+          <Property Name="EstadoID" Type="Int32" Nullable="false" />
+          <Property Name="Conexiones" Type="Int32" />
+          <Property Name="Serie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MAC" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contrato" Relationship="Self.fkContratoDet" FromRole="ContratoDet" ToRole="Contratos" />
+          <NavigationProperty Name="Estado" Relationship="Self.fkContratoEstado" FromRole="ContratoDet" ToRole="Estados" />
+          <NavigationProperty Name="Tarifa" Relationship="Self.fkContratoTarifa" FromRole="ContratoDet" ToRole="Tarifas" />
+          <NavigationProperty Name="Facturas" Relationship="Self.fkFacturaContrato" FromRole="ContratoDet" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ContratoID" Type="Int32" Nullable="false" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoID" Type="Int32" Nullable="false" />
+          <Property Name="Fch_Contrato" Type="DateTime" Precision="0" />
+          <Property Name="Fch_Instalacion" Type="DateTime" Precision="0" />
+          <Property Name="Fch_Corte" Type="DateTime" Precision="0" />
+          <Property Name="VendedorID" Type="Int32" />
+          <Property Name="TecnicoID" Type="Int32" />
+          <Property Name="PosteID" Type="Int32" />
+          <Property Name="NodoID" Type="Int32" />
+          <Property Name="Casa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Bloque" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveUbicacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Obs" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="BarrioColoniaID" Type="Int32" />
+          <NavigationProperty Name="BarrioColonia" Relationship="Self.fkContratosBarrio" FromRole="Contratos" ToRole="BarrioColonias" />
+          <NavigationProperty Name="ContratoDets" Relationship="Self.fkContratoDet" FromRole="Contratos" ToRole="ContratoDet" />
+          <NavigationProperty Name="Estado" Relationship="Self.fkContratosEstados" FromRole="Contratos" ToRole="Estados" />
+          <NavigationProperty Name="Nodo" Relationship="Self.fkcontratosNodos" FromRole="Contratos" ToRole="Nodos" />
+          <NavigationProperty Name="Poste" Relationship="Self.fkContratosPostes" FromRole="Contratos" ToRole="Postes" />
+          <NavigationProperty Name="Vendedore" Relationship="Self.fkContratosVendedores" FromRole="Contratos" ToRole="Vendedores" />
+          <NavigationProperty Name="Tecnico" Relationship="SAI_CableModel.fkContratosTecnicos" FromRole="Contrato" ToRole="Tecnico" />
+          <NavigationProperty Name="Cliente" Relationship="SAI_CableModel.fkContratosClientes" FromRole="Contrato" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaisID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pai" Relationship="Self.fkDepPais" FromRole="Departamentos" ToRole="Pais" />
+          <NavigationProperty Name="Municipios" Relationship="Self.fkMunDep" FromRole="Departamentos" ToRole="Municipios" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Facturar" Type="Boolean" />
+          <NavigationProperty Name="ContratoDets" Relationship="Self.fkContratoEstado" FromRole="Estados" ToRole="ContratoDet" />
+          <NavigationProperty Name="Contratos" Relationship="Self.fkContratosEstados" FromRole="Estados" ToRole="Contratos" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesEstado" FromRole="Estado" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ContratoID" />
+            <PropertyRef Name="TarifaID" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="ContratoID" Type="Int32" Nullable="false" />
+          <Property Name="TarifaID" Type="Int32" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ContratoDet" Relationship="Self.fkFacturaContrato" FromRole="Factura" ToRole="ContratoDet" />
+          <NavigationProperty Name="Cliente" Relationship="SAI_CableModel.fkFacturaCliente" FromRole="Factura" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Linea">
+          <Key>
+            <PropertyRef Name="LineaID" />
+          </Key>
+          <Property Name="LineaID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="MunicipioID" />
+          </Key>
+          <Property Name="MunicipioID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BarrioColonias" Relationship="Self.fkBarrio" FromRole="Municipios" ToRole="BarrioColonias" />
+          <NavigationProperty Name="CallAves" Relationship="Self.fkCallAve" FromRole="Municipios" ToRole="CallAve" />
+          <NavigationProperty Name="Departamento" Relationship="Self.fkMunDep" FromRole="Municipios" ToRole="Departamentos" />
+          <NavigationProperty Name="Oficinas" Relationship="Self.fkOficinaMun" FromRole="Municipios" ToRole="Oficinas" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesMun" FromRole="Municipio" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Nodo">
+          <Key>
+            <PropertyRef Name="NodoID" />
+          </Key>
+          <Property Name="NodoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BarrioColoniaid" Type="Int32" Nullable="false" />
+          <Property Name="HP" Type="Int32" />
+          <NavigationProperty Name="BarrioColonia" Relationship="Self.fkNodosBarr" FromRole="Nodos" ToRole="BarrioColonias" />
+          <NavigationProperty Name="Contratos" Relationship="Self.fkcontratosNodos" FromRole="Nodos" ToRole="Contratos" />
+          <NavigationProperty Name="Postes" Relationship="Self.fkPostesNodos" FromRole="Nodos" ToRole="Postes" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesNodo" FromRole="Nodo" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Oficina">
+          <Key>
+            <PropertyRef Name="OficinaID" />
+          </Key>
+          <Property Name="OficinaID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MunicipioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CajaCobros" Relationship="Self.fkCajaOficina" FromRole="Oficinas" ToRole="CajaCobros" />
+          <NavigationProperty Name="Municipio" Relationship="Self.fkOficinaMun" FromRole="Oficinas" ToRole="Municipios" />
+        </EntityType>
+        <EntityType Name="Pai">
+          <Key>
+            <PropertyRef Name="PaisID" />
+          </Key>
+          <Property Name="PaisID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.fkDepPais" FromRole="Pais" ToRole="Departamentos" />
+        </EntityType>
+        <EntityType Name="Poste">
+          <Key>
+            <PropertyRef Name="PosteID" />
+          </Key>
+          <Property Name="PosteID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BarrioColoniaID" Type="Int32" Nullable="false" />
+          <Property Name="CallAveID" Type="Int32" />
+          <Property Name="CallAvePasID" Type="Int32" />
+          <Property Name="NodoID" Type="Int32" />
+          <NavigationProperty Name="BarrioColonia" Relationship="Self.fkPostesColonia" FromRole="Postes" ToRole="BarrioColonias" />
+          <NavigationProperty Name="CallAve" Relationship="Self.fkPostesCallAve" FromRole="Postes" ToRole="CallAve" />
+          <NavigationProperty Name="CallAvePa" Relationship="Self.fkPostesCallAvePas" FromRole="Postes" ToRole="CallAvePas" />
+          <NavigationProperty Name="Contratos" Relationship="Self.fkContratosPostes" FromRole="Postes" ToRole="Contratos" />
+          <NavigationProperty Name="Nodo" Relationship="Self.fkPostesNodos" FromRole="Postes" ToRole="Nodos" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesPostes" FromRole="Poste" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LineaID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="ServicioID" />
+          </Key>
+          <Property Name="ServicioID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Recargo" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CableB" Type="Boolean" />
+          <Property Name="CableD" Type="Boolean" />
+          <Property Name="Internet" Type="Boolean" />
+          <Property Name="Telefonia" Type="Boolean" />
+          <NavigationProperty Name="Tarifas" Relationship="Self.fkTarifaServicio" FromRole="Servicios" ToRole="Tarifas" />
+        </EntityType>
+        <EntityType Name="Solucione">
+          <Key>
+            <PropertyRef Name="SolucionID" />
+          </Key>
+          <Property Name="SolucionID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarifa">
+          <Key>
+            <PropertyRef Name="TarifaID" />
+          </Key>
+          <Property Name="TarifaID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="ServicioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContratoDets" Relationship="Self.fkContratoTarifa" FromRole="Tarifas" ToRole="ContratoDet" />
+          <NavigationProperty Name="Servicio" Relationship="Self.fkTarifaServicio" FromRole="Tarifas" ToRole="Servicios" />
+        </EntityType>
+        <EntityType Name="TelefonoTipo">
+          <Key>
+            <PropertyRef Name="TelefonoID" />
+          </Key>
+          <Property Name="TelefonoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="SAI_CableModel.fkClientesTelf3" FromRole="TelefonoTipo" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="TipoCobro">
+          <Key>
+            <PropertyRef Name="TipoCobroID" />
+          </Key>
+          <Property Name="TipoCobroID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cobros" Relationship="Self.fkCobrosTipo" FromRole="TipoCobros" ToRole="Cobros" />
+        </EntityType>
+        <EntityType Name="TipoMovimiento">
+          <Key>
+            <PropertyRef Name="TipoMovimientoID" />
+          </Key>
+          <Property Name="TipoMovimientoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendedore">
+          <Key>
+            <PropertyRef Name="VendedorID" />
+          </Key>
+          <Property Name="VendedorID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comision" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="Contratos" Relationship="Self.fkContratosVendedores" FromRole="Vendedores" ToRole="Contratos" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajoDet">
+          <Key>
+            <PropertyRef Name="OrdenID" />
+            <PropertyRef Name="ProductoID" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="OrdenID" Type="Int32" Nullable="false" />
+          <Property Name="ProductoID" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="fkCobrosBanco">
+          <End Role="Bancos" Type="Self.Banco" Multiplicity="0..1" />
+          <End Role="Cobros" Type="Self.Cobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="BancoID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkBarrio">
+          <End Role="Municipios" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="BarrioColonias" Type="Self.BarrioColonia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="BarrioColonias">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCallAveCol">
+          <End Role="BarrioColonias" Type="Self.BarrioColonia" Multiplicity="1" />
+          <End Role="CallAvePas" Type="Self.CallAvePa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="CallAvePas">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosBarrio">
+          <End Role="BarrioColonias" Type="Self.BarrioColonia" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkNodosBarr">
+          <End Role="BarrioColonias" Type="Self.BarrioColonia" Multiplicity="1" />
+          <End Role="Nodos" Type="Self.Nodo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Nodos">
+              <PropertyRef Name="BarrioColoniaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesColonia">
+          <End Role="BarrioColonias" Type="Self.BarrioColonia" Multiplicity="1" />
+          <End Role="Postes" Type="Self.Poste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonias">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCajaCobrador">
+          <End Role="Cobradores" Type="Self.Cobradore" Multiplicity="0..1" />
+          <End Role="CajaCobros" Type="Self.CajaCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="CobradorID" />
+            </Principal>
+            <Dependent Role="CajaCobros">
+              <PropertyRef Name="CobradorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCajaOficina">
+          <End Role="Oficinas" Type="Self.Oficina" Multiplicity="1" />
+          <End Role="CajaCobros" Type="Self.CajaCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oficinas">
+              <PropertyRef Name="OficinaID" />
+            </Principal>
+            <Dependent Role="CajaCobros">
+              <PropertyRef Name="OficinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosCaja">
+          <End Role="CajaCobros" Type="Self.CajaCobro" Multiplicity="1" />
+          <End Role="Cobros" Type="Self.Cobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CajaCobros">
+              <PropertyRef Name="CajaCobroId" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="CajaCobroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCallAve">
+          <End Role="Municipios" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="CallAve" Type="Self.CallAve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="CallAve">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesCallAve">
+          <End Role="CallAve" Type="Self.CallAve" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Poste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallAve">
+              <PropertyRef Name="CallAveID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="CallAveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesCallAvePas">
+          <End Role="CallAvePas" Type="Self.CallAvePa" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Poste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallAvePas">
+              <PropertyRef Name="CallAvePasID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="CallAvePasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosCobrador">
+          <End Role="Cobradores" Type="Self.Cobradore" Multiplicity="0..1" />
+          <End Role="Cobros" Type="Self.Cobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="CobradorID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="CobradorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosTipo">
+          <End Role="TipoCobros" Type="Self.TipoCobro" Multiplicity="1" />
+          <End Role="Cobros" Type="Self.Cobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCobros">
+              <PropertyRef Name="TipoCobroID" />
+            </Principal>
+            <Dependent Role="Cobros">
+              <PropertyRef Name="TipoCobroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoDet">
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratos">
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoEstado">
+          <End Role="Estados" Type="Self.Estado" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratoTarifa">
+          <End Role="Tarifas" Type="Self.Tarifa" Multiplicity="1" />
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarifas">
+              <PropertyRef Name="TarifaID" />
+            </Principal>
+            <Dependent Role="ContratoDet">
+              <PropertyRef Name="TarifaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFacturaContrato">
+          <End Role="ContratoDet" Type="Self.ContratoDet" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContratoDet">
+              <PropertyRef Name="ClienteID" />
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="TarifaID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="ClienteID" />
+              <PropertyRef Name="ContratoID" />
+              <PropertyRef Name="TarifaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosEstados">
+          <End Role="Estados" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontratosNodos">
+          <End Role="Nodos" Type="Self.Nodo" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodos">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="NodoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosPostes">
+          <End Role="Postes" Type="Self.Poste" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postes">
+              <PropertyRef Name="PosteID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="PosteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosVendedores">
+          <End Role="Vendedores" Type="Self.Vendedore" Multiplicity="0..1" />
+          <End Role="Contratos" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="VendedorID" />
+            </Principal>
+            <Dependent Role="Contratos">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkDepPais">
+          <End Role="Pais" Type="Self.Pai" Multiplicity="1" />
+          <End Role="Departamentos" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="PaisID" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="PaisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkMunDep">
+          <End Role="Departamentos" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Municipios" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="Municipios">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOficinaMun">
+          <End Role="Municipios" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="Oficinas" Type="Self.Oficina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipios">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="Oficinas">
+              <PropertyRef Name="MunicipioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPostesNodos">
+          <End Role="Nodos" Type="Self.Nodo" Multiplicity="0..1" />
+          <End Role="Postes" Type="Self.Poste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodos">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Postes">
+              <PropertyRef Name="NodoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkTarifaServicio">
+          <End Role="Servicios" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="Tarifas" Type="Self.Tarifa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="ServicioID" />
+            </Principal>
+            <Dependent Role="Tarifas">
+              <PropertyRef Name="ServicioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAI_CableEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacenes" EntityType="Self.Almacene" />
+          <EntitySet Name="Bancos" EntityType="Self.Banco" />
+          <EntitySet Name="BarrioColonias" EntityType="Self.BarrioColonia" />
+          <EntitySet Name="CajaCobros" EntityType="Self.CajaCobro" />
+          <EntitySet Name="CallAves" EntityType="Self.CallAve" />
+          <EntitySet Name="CallAvePas" EntityType="Self.CallAvePa" />
+          <EntitySet Name="Cobradores" EntityType="Self.Cobradore" />
+          <EntitySet Name="Cobros" EntityType="Self.Cobro" />
+          <EntitySet Name="CobrosDets" EntityType="Self.CobrosDet" />
+          <EntitySet Name="Configuracions" EntityType="Self.Configuracion" />
+          <EntitySet Name="ContratoDets" EntityType="Self.ContratoDet" />
+          <EntitySet Name="Contratos" EntityType="Self.Contrato" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
+          <EntitySet Name="Estados" EntityType="Self.Estado" />
+          <EntitySet Name="Facturas" EntityType="Self.Factura" />
+          <EntitySet Name="Lineas" EntityType="Self.Linea" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+          <EntitySet Name="Nodos" EntityType="Self.Nodo" />
+          <EntitySet Name="Oficinas" EntityType="Self.Oficina" />
+          <EntitySet Name="Pais" EntityType="Self.Pai" />
+          <EntitySet Name="Postes" EntityType="Self.Poste" />
+          <EntitySet Name="Productos" EntityType="Self.Producto" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicio" />
+          <EntitySet Name="Soluciones" EntityType="Self.Solucione" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tarifas" EntityType="Self.Tarifa" />
+          <EntitySet Name="TelefonoTipoes" EntityType="Self.TelefonoTipo" />
+          <EntitySet Name="TipoCobros" EntityType="Self.TipoCobro" />
+          <EntitySet Name="TipoMovimientos" EntityType="Self.TipoMovimiento" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedore" />
+          <EntitySet Name="OrdenesTrabajoDets" EntityType="Self.OrdenesTrabajoDet" />
+          <AssociationSet Name="fkCobrosBanco" Association="Self.fkCobrosBanco">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkBarrio" Association="Self.fkBarrio">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+          </AssociationSet>
+          <AssociationSet Name="fkCallAveCol" Association="Self.fkCallAveCol">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="CallAvePas" EntitySet="CallAvePas" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosBarrio" Association="Self.fkContratosBarrio">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkNodosBarr" Association="Self.fkNodosBarr">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Nodos" EntitySet="Nodos" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesColonia" Association="Self.fkPostesColonia">
+            <End Role="BarrioColonias" EntitySet="BarrioColonias" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkCajaCobrador" Association="Self.fkCajaCobrador">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCajaOficina" Association="Self.fkCajaOficina">
+            <End Role="Oficinas" EntitySet="Oficinas" />
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosCaja" Association="Self.fkCobrosCaja">
+            <End Role="CajaCobros" EntitySet="CajaCobros" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCallAve" Association="Self.fkCallAve">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="CallAve" EntitySet="CallAves" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesCallAve" Association="Self.fkPostesCallAve">
+            <End Role="CallAve" EntitySet="CallAves" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesCallAvePas" Association="Self.fkPostesCallAvePas">
+            <End Role="CallAvePas" EntitySet="CallAvePas" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosCobrador" Association="Self.fkCobrosCobrador">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosTipo" Association="Self.fkCobrosTipo">
+            <End Role="TipoCobros" EntitySet="TipoCobros" />
+            <End Role="Cobros" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoDet" Association="Self.fkContratoDet">
+            <End Role="Contratos" EntitySet="Contratos" />
+            <End Role="ContratoDet" EntitySet="ContratoDets" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoEstado" Association="Self.fkContratoEstado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ContratoDet" EntitySet="ContratoDets" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratoTarifa" Association="Self.fkContratoTarifa">
+            <End Role="Tarifas" EntitySet="Tarifas" />
+            <End Role="ContratoDet" EntitySet="ContratoDets" />
+          </AssociationSet>
+          <AssociationSet Name="fkFacturaContrato" Association="Self.fkFacturaContrato">
+            <End Role="ContratoDet" EntitySet="ContratoDets" />
+            <End Role="Factura" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosEstados" Association="Self.fkContratosEstados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontratosNodos" Association="Self.fkcontratosNodos">
+            <End Role="Nodos" EntitySet="Nodos" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosPostes" Association="Self.fkContratosPostes">
+            <End Role="Postes" EntitySet="Postes" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosVendedores" Association="Self.fkContratosVendedores">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Contratos" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkDepPais" Association="Self.fkDepPais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamentos" EntitySet="Departamentos" />
+          </AssociationSet>
+          <AssociationSet Name="fkMunDep" Association="Self.fkMunDep">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Municipios" EntitySet="Municipios" />
+          </AssociationSet>
+          <AssociationSet Name="fkOficinaMun" Association="Self.fkOficinaMun">
+            <End Role="Municipios" EntitySet="Municipios" />
+            <End Role="Oficinas" EntitySet="Oficinas" />
+          </AssociationSet>
+          <AssociationSet Name="fkPostesNodos" Association="Self.fkPostesNodos">
+            <End Role="Nodos" EntitySet="Nodos" />
+            <End Role="Postes" EntitySet="Postes" />
+          </AssociationSet>
+          <AssociationSet Name="fkTarifaServicio" Association="Self.fkTarifaServicio">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Tarifas" EntitySet="Tarifas" />
+          </AssociationSet>
+          <EntitySet Name="Tecnicos" EntityType="SAI_CableModel.Tecnico" />
+          <AssociationSet Name="fkContratosTecnicos" Association="SAI_CableModel.fkContratosTecnicos">
+            <End Role="Tecnico" EntitySet="Tecnicos" />
+            <End Role="Contrato" EntitySet="Contratos" />
+          </AssociationSet>
+          <EntitySet Name="Estatus" EntityType="SAI_CableModel.Estatu" />
+          <EntitySet Name="OrdenesTrabajoes" EntityType="SAI_CableModel.OrdenesTrabajo" />
+          <AssociationSet Name="FK_OrdenesTrabajo_Estatus" Association="SAI_CableModel.FK_OrdenesTrabajo_Estatus">
+            <End Role="Estatu" EntitySet="Estatus" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajoes" />
+          </AssociationSet>
+          <EntitySet Name="Fallas" EntityType="SAI_CableModel.Falla" />
+          <AssociationSet Name="fkOrdenesFallas" Association="SAI_CableModel.fkOrdenesFallas">
+            <End Role="Falla" EntitySet="Fallas" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajoes" />
+          </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="SAI_CableModel.Cliente" />
+          <AssociationSet Name="fkClientesBarrio" Association="SAI_CableModel.fkClientesBarrio">
+            <End Role="BarrioColonia" EntitySet="BarrioColonias" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesEstado" Association="SAI_CableModel.fkClientesEstado">
+            <End Role="Estado" EntitySet="Estados" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesMun" Association="SAI_CableModel.fkClientesMun">
+            <End Role="Municipio" EntitySet="Municipios" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesNodo" Association="SAI_CableModel.fkClientesNodo">
+            <End Role="Nodo" EntitySet="Nodos" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesPostes" Association="SAI_CableModel.fkClientesPostes">
+            <End Role="Poste" EntitySet="Postes" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientesTelf3" Association="SAI_CableModel.fkClientesTelf3">
+            <End Role="TelefonoTipo" EntitySet="TelefonoTipoes" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkCobrosClie" Association="SAI_CableModel.fkCobrosClie">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Cobro" EntitySet="Cobros" />
+          </AssociationSet>
+          <AssociationSet Name="fkContratosClientes" Association="SAI_CableModel.fkContratosClientes">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Contrato" EntitySet="Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="fkFacturaCliente" Association="SAI_CableModel.fkFacturaCliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Factura" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrdenesClientes" Association="SAI_CableModel.fkOrdenesClientes">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajoes" />
+          </AssociationSet>
+          <EntitySet Name="DetMateriales" EntityType="SAI_CableModel.DetMateriale" />
+          <EntitySet Name="Materials" EntityType="SAI_CableModel.Material" />
+          <EntitySet Name="Unidads" EntityType="SAI_CableModel.Unidad" />
+          <AssociationSet Name="FK_DetMateriales_Material" Association="SAI_CableModel.FK_DetMateriales_Material">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="DetMateriale" EntitySet="DetMateriales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetMateriales_OrdenesTrabajo" Association="SAI_CableModel.FK_DetMateriales_OrdenesTrabajo">
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajoes" />
+            <End Role="DetMateriale" EntitySet="DetMateriales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Unidad" Association="SAI_CableModel.FK_Material_Unidad">
+            <End Role="Unidad" EntitySet="Unidads" />
+            <End Role="Material" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesTrabajo_Tecnicos" Association="SAI_CableModel.FK_OrdenesTrabajo_Tecnicos">
+            <End Role="Tecnico" EntitySet="Tecnicos" />
+            <End Role="OrdenesTrabajo" EntitySet="OrdenesTrabajoes" />
+          </AssociationSet>
+          <FunctionImport Name="agregarmaterial">
+            <Parameter Name="OrdenID" Mode="In" Type="Int32" />
+            <Parameter Name="Material" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Observacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="cambiacoordenadas">
+            <Parameter Name="clienteID" Mode="In" Type="Int32" />
+            <Parameter Name="latitude" Mode="In" Type="String" />
+            <Parameter Name="longitude" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ModificaOrden">
+            <Parameter Name="OrdenID" Mode="In" Type="Int32" />
+            <Parameter Name="EstatusID" Mode="In" Type="Int32" />
+            <Parameter Name="DescripcionSolucion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarOrdenDet">
+            <Parameter Name="OrdenID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="Tecnico">
+          <Key>
+            <PropertyRef Name="TecnicoID" />
+          </Key>
+          <Property Name="TecnicoID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contratos" Relationship="SAI_CableModel.fkContratosTecnicos" FromRole="Tecnico" ToRole="Contrato" />
+          <NavigationProperty Name="OrdenesTrabajoes" Relationship="SAI_CableModel.FK_OrdenesTrabajo_Tecnicos" FromRole="Tecnico" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <Association Name="fkContratosTecnicos">
+          <End Type="SAI_CableModel.Tecnico" Role="Tecnico" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnico">
+              <PropertyRef Name="TecnicoID" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="TecnicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Estatu">
+          <Key>
+            <PropertyRef Name="EstatusID" />
+          </Key>
+          <Property Name="EstatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionEstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrdenesTrabajoes" Relationship="SAI_CableModel.FK_OrdenesTrabajo_Estatus" FromRole="Estatu" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <EntityType Name="OrdenesTrabajo">
+          <Key>
+            <PropertyRef Name="OrdenID" />
+          </Key>
+          <Property Name="OrdenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClienteID" Type="Int32" />
+          <Property Name="FallaID" Type="Int32" />
+          <Property Name="DescripcionFalla" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmpleadoID" Type="Int32" />
+          <Property Name="TecnicoID" Type="Int32" />
+          <Property Name="EstatusID" Type="Int32" />
+          <Property Name="Fch_Creacion" Type="DateTime" Precision="0" />
+          <Property Name="Fch_Cierre" Type="DateTime" Precision="0" />
+          <Property Name="AlmacenInID" Type="Int32" />
+          <Property Name="DescripcionSolucion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estatu" Relationship="SAI_CableModel.FK_OrdenesTrabajo_Estatus" FromRole="OrdenesTrabajo" ToRole="Estatu" />
+          <NavigationProperty Name="Falla" Relationship="SAI_CableModel.fkOrdenesFallas" FromRole="OrdenesTrabajo" ToRole="Falla" />
+          <NavigationProperty Name="Cliente" Relationship="SAI_CableModel.fkOrdenesClientes" FromRole="OrdenesTrabajo" ToRole="Cliente" />
+          <NavigationProperty Name="DetMateriales" Relationship="SAI_CableModel.FK_DetMateriales_OrdenesTrabajo" FromRole="OrdenesTrabajo" ToRole="DetMateriale" />
+          <NavigationProperty Name="Tecnico" Relationship="SAI_CableModel.FK_OrdenesTrabajo_Tecnicos" FromRole="OrdenesTrabajo" ToRole="Tecnico" />
+        </EntityType>
+        <Association Name="FK_OrdenesTrabajo_Estatus">
+          <End Type="SAI_CableModel.Estatu" Role="Estatu" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatu">
+              <PropertyRef Name="EstatusID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="EstatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Falla">
+          <Key>
+            <PropertyRef Name="FallaID" />
+          </Key>
+          <Property Name="FallaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrdenesTrabajoes" Relationship="SAI_CableModel.fkOrdenesFallas" FromRole="Falla" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <Association Name="fkOrdenesFallas">
+          <End Type="SAI_CableModel.Falla" Role="Falla" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Falla">
+              <PropertyRef Name="FallaID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="FallaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Identidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoId" Type="Int32" />
+          <Property Name="PosteID" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveUbicacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1ID" Type="Int32" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2ID" Type="Int32" />
+          <Property Name="Telefono3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono3ID" Type="Int32" />
+          <Property Name="Empresa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionTrabajo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TerceraEdad" Type="Boolean" />
+          <Property Name="CiudadTrabajoID" Type="Int32" />
+          <Property Name="NodoId" Type="Int32" />
+          <Property Name="BarrioColoniaID" Type="Int32" />
+          <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BarrioColonia" Relationship="SAI_CableModel.fkClientesBarrio" FromRole="Cliente" ToRole="BarrioColonia" />
+          <NavigationProperty Name="Estado" Relationship="SAI_CableModel.fkClientesEstado" FromRole="Cliente" ToRole="Estado" />
+          <NavigationProperty Name="Municipio" Relationship="SAI_CableModel.fkClientesMun" FromRole="Cliente" ToRole="Municipio" />
+          <NavigationProperty Name="Nodo" Relationship="SAI_CableModel.fkClientesNodo" FromRole="Cliente" ToRole="Nodo" />
+          <NavigationProperty Name="Poste" Relationship="SAI_CableModel.fkClientesPostes" FromRole="Cliente" ToRole="Poste" />
+          <NavigationProperty Name="TelefonoTipo" Relationship="SAI_CableModel.fkClientesTelf3" FromRole="Cliente" ToRole="TelefonoTipo" />
+          <NavigationProperty Name="Cobros" Relationship="SAI_CableModel.fkCobrosClie" FromRole="Cliente" ToRole="Cobro" />
+          <NavigationProperty Name="Contratos" Relationship="SAI_CableModel.fkContratosClientes" FromRole="Cliente" ToRole="Contrato" />
+          <NavigationProperty Name="Facturas" Relationship="SAI_CableModel.fkFacturaCliente" FromRole="Cliente" ToRole="Factura" />
+          <NavigationProperty Name="OrdenesTrabajoes" Relationship="SAI_CableModel.fkOrdenesClientes" FromRole="Cliente" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <Association Name="fkClientesBarrio">
+          <End Type="SAI_CableModel.BarrioColonia" Role="BarrioColonia" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarrioColonia">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="BarrioColoniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesEstado">
+          <End Type="SAI_CableModel.Estado" Role="Estado" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="EstadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesMun">
+          <End Type="SAI_CableModel.Municipio" Role="Municipio" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="MunicipioID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="CiudadTrabajoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesNodo">
+          <End Type="SAI_CableModel.Nodo" Role="Nodo" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodo">
+              <PropertyRef Name="NodoID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="NodoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesPostes">
+          <End Type="SAI_CableModel.Poste" Role="Poste" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poste">
+              <PropertyRef Name="PosteID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="PosteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientesTelf3">
+          <End Type="SAI_CableModel.TelefonoTipo" Role="TelefonoTipo" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TelefonoTipo">
+              <PropertyRef Name="TelefonoID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Telefono3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkCobrosClie">
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="SAI_CableModel.Cobro" Role="Cobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cobro">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkContratosClientes">
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="SAI_CableModel.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFacturaCliente">
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="SAI_CableModel.Factura" Role="Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrdenesClientes">
+          <End Type="SAI_CableModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetMateriale">
+          <Key>
+            <PropertyRef Name="DetMaterialesID" />
+          </Key>
+          <Property Name="DetMaterialesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrdenID" Type="Int32" />
+          <Property Name="MaterialID" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Material" Relationship="SAI_CableModel.FK_DetMateriales_Material" FromRole="DetMateriale" ToRole="Material" />
+          <NavigationProperty Name="OrdenesTrabajo" Relationship="SAI_CableModel.FK_DetMateriales_OrdenesTrabajo" FromRole="DetMateriale" ToRole="OrdenesTrabajo" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnidadID" Type="Int32" />
+          <NavigationProperty Name="DetMateriales" Relationship="SAI_CableModel.FK_DetMateriales_Material" FromRole="Material" ToRole="DetMateriale" />
+          <NavigationProperty Name="Unidad" Relationship="SAI_CableModel.FK_Material_Unidad" FromRole="Material" ToRole="Unidad" />
+        </EntityType>
+        <EntityType Name="Unidad">
+          <Key>
+            <PropertyRef Name="UnidadID" />
+          </Key>
+          <Property Name="UnidadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Materials" Relationship="SAI_CableModel.FK_Material_Unidad" FromRole="Unidad" ToRole="Material" />
+        </EntityType>
+        <Association Name="FK_DetMateriales_Material">
+          <End Type="SAI_CableModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.DetMateriale" Role="DetMateriale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="DetMateriale">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetMateriales_OrdenesTrabajo">
+          <End Type="SAI_CableModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.DetMateriale" Role="DetMateriale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesTrabajo">
+              <PropertyRef Name="OrdenID" />
+            </Principal>
+            <Dependent Role="DetMateriale">
+              <PropertyRef Name="OrdenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Unidad">
+          <End Type="SAI_CableModel.Unidad" Role="Unidad" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidad">
+              <PropertyRef Name="UnidadID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="UnidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesTrabajo_Tecnicos">
+          <End Type="SAI_CableModel.Tecnico" Role="Tecnico" Multiplicity="0..1" />
+          <End Type="SAI_CableModel.OrdenesTrabajo" Role="OrdenesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnico">
+              <PropertyRef Name="TecnicoID" />
+            </Principal>
+            <Dependent Role="OrdenesTrabajo">
+              <PropertyRef Name="TecnicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAI_CableModelStoreContainer" CdmEntityContainer="SAI_CableEntities">
+          <EntitySetMapping Name="Almacenes">
+            <EntityTypeMapping TypeName="SAI_CableModel.Almacene">
+              <MappingFragment StoreEntitySet="Almacenes">
+                <ScalarProperty Name="AlmacenID" ColumnName="AlmacenID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Banco">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="BancoID" ColumnName="BancoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarrioColonias">
+            <EntityTypeMapping TypeName="SAI_CableModel.BarrioColonia">
+              <MappingFragment StoreEntitySet="BarrioColonias">
+                <ScalarProperty Name="BarrioColoniaID" ColumnName="BarrioColoniaID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="MunicipioID" ColumnName="MunicipioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaCobros">
+            <EntityTypeMapping TypeName="SAI_CableModel.CajaCobro">
+              <MappingFragment StoreEntitySet="CajaCobros">
+                <ScalarProperty Name="CajaCobroId" ColumnName="CajaCobroId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="OficinaId" ColumnName="OficinaId" />
+                <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+                <ScalarProperty Name="MAC" ColumnName="MAC" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="CobradorID" ColumnName="CobradorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallAves">
+            <EntityTypeMapping TypeName="SAI_CableModel.CallAve">
+              <MappingFragment StoreEntitySet="CallAve">
+                <ScalarProperty Name="CallAveID" ColumnName="CallAveID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="MunicipioID" ColumnName="MunicipioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallAvePas">
+            <EntityTypeMapping TypeName="SAI_CableModel.CallAvePa">
+              <MappingFragment StoreEntitySet="CallAvePas">
+                <ScalarProperty Name="CallAvePasID" ColumnName="CallAvePasID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BarrioColoniaID" ColumnName="BarrioColoniaID" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cobradores">
+            <EntityTypeMapping TypeName="SAI_CableModel.Cobradore">
+              <MappingFragment StoreEntitySet="Cobradores">
+                <ScalarProperty Name="CobradorID" ColumnName="CobradorID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="ClaveCaja" ColumnName="ClaveCaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cobros">
+            <EntityTypeMapping TypeName="SAI_CableModel.Cobro">
+              <MappingFragment StoreEntitySet="Cobros">
+                <ScalarProperty Name="CobroID" ColumnName="CobroID" />
+                <ScalarProperty Name="CajaCobroID" ColumnName="CajaCobroID" />
+                <ScalarProperty Name="CobradorID" ColumnName="CobradorID" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Digitado" ColumnName="Digitado" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="TipoCobroID" ColumnName="TipoCobroID" />
+                <ScalarProperty Name="BancoID" ColumnName="BancoID" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CobrosDets">
+            <EntityTypeMapping TypeName="SAI_CableModel.CobrosDet">
+              <MappingFragment StoreEntitySet="CobrosDet">
+                <ScalarProperty Name="CobroID" ColumnName="CobroID" />
+                <ScalarProperty Name="CajaCobroID" ColumnName="CajaCobroID" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ContratoID" ColumnName="ContratoID" />
+                <ScalarProperty Name="TarifaID" ColumnName="TarifaID" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuracions">
+            <EntityTypeMapping TypeName="SAI_CableModel.Configuracion">
+              <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="ConfiguracionID" ColumnName="ConfiguracionID" />
+                <ScalarProperty Name="Dia_Corte" ColumnName="Dia_Corte" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RTN_Alfa" ColumnName="RTN_Alfa" />
+                <ScalarProperty Name="RTN_Num" ColumnName="RTN_Num" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratoDets">
+            <EntityTypeMapping TypeName="SAI_CableModel.ContratoDet">
+              <MappingFragment StoreEntitySet="ContratoDet">
+                <ScalarProperty Name="ContratoID" ColumnName="ContratoID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="TarifaID" ColumnName="TarifaID" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Conexiones" ColumnName="Conexiones" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="MAC" ColumnName="MAC" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contratos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Contrato">
+              <MappingFragment StoreEntitySet="Contratos">
+                <ScalarProperty Name="ContratoID" ColumnName="ContratoID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Fch_Contrato" ColumnName="Fch_Contrato" />
+                <ScalarProperty Name="Fch_Instalacion" ColumnName="Fch_Instalacion" />
+                <ScalarProperty Name="Fch_Corte" ColumnName="Fch_Corte" />
+                <ScalarProperty Name="VendedorID" ColumnName="VendedorID" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="PosteID" ColumnName="PosteID" />
+                <ScalarProperty Name="NodoID" ColumnName="NodoID" />
+                <ScalarProperty Name="Casa" ColumnName="Casa" />
+                <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+                <ScalarProperty Name="ClaveUbicacion" ColumnName="ClaveUbicacion" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="BarrioColoniaID" ColumnName="BarrioColoniaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="SAI_CableModel.Estado">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Facturar" ColumnName="Facturar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="SAI_CableModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ContratoID" ColumnName="ContratoID" />
+                <ScalarProperty Name="TarifaID" ColumnName="TarifaID" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lineas">
+            <EntityTypeMapping TypeName="SAI_CableModel.Linea">
+              <MappingFragment StoreEntitySet="Lineas">
+                <ScalarProperty Name="LineaID" ColumnName="LineaID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="SAI_CableModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipios">
+                <ScalarProperty Name="MunicipioID" ColumnName="MunicipioID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nodos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Nodo">
+              <MappingFragment StoreEntitySet="Nodos">
+                <ScalarProperty Name="NodoID" ColumnName="NodoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BarrioColoniaid" ColumnName="BarrioColoniaid" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oficinas">
+            <EntityTypeMapping TypeName="SAI_CableModel.Oficina">
+              <MappingFragment StoreEntitySet="Oficinas">
+                <ScalarProperty Name="OficinaID" ColumnName="OficinaID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="MunicipioID" ColumnName="MunicipioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="SAI_CableModel.Pai">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postes">
+            <EntityTypeMapping TypeName="SAI_CableModel.Poste">
+              <MappingFragment StoreEntitySet="Postes">
+                <ScalarProperty Name="PosteID" ColumnName="PosteID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BarrioColoniaID" ColumnName="BarrioColoniaID" />
+                <ScalarProperty Name="CallAveID" ColumnName="CallAveID" />
+                <ScalarProperty Name="CallAvePasID" ColumnName="CallAvePasID" />
+                <ScalarProperty Name="NodoID" ColumnName="NodoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Producto">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="LineaID" ColumnName="LineaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="SAI_CableModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicios">
+                <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+                <ScalarProperty Name="CableB" ColumnName="CableB" />
+                <ScalarProperty Name="CableD" ColumnName="CableD" />
+                <ScalarProperty Name="Internet" ColumnName="Internet" />
+                <ScalarProperty Name="Telefonia" ColumnName="Telefonia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soluciones">
+            <EntityTypeMapping TypeName="SAI_CableModel.Solucione">
+              <MappingFragment StoreEntitySet="Soluciones">
+                <ScalarProperty Name="SolucionID" ColumnName="SolucionID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SAI_CableModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarifas">
+            <EntityTypeMapping TypeName="SAI_CableModel.Tarifa">
+              <MappingFragment StoreEntitySet="Tarifas">
+                <ScalarProperty Name="TarifaID" ColumnName="TarifaID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TelefonoTipoes">
+            <EntityTypeMapping TypeName="SAI_CableModel.TelefonoTipo">
+              <MappingFragment StoreEntitySet="TelefonoTipo">
+                <ScalarProperty Name="TelefonoID" ColumnName="TelefonoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCobros">
+            <EntityTypeMapping TypeName="SAI_CableModel.TipoCobro">
+              <MappingFragment StoreEntitySet="TipoCobros">
+                <ScalarProperty Name="TipoCobroID" ColumnName="TipoCobroID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimientos">
+            <EntityTypeMapping TypeName="SAI_CableModel.TipoMovimiento">
+              <MappingFragment StoreEntitySet="TipoMovimientos">
+                <ScalarProperty Name="TipoMovimientoID" ColumnName="TipoMovimientoID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedores">
+            <EntityTypeMapping TypeName="SAI_CableModel.Vendedore">
+              <MappingFragment StoreEntitySet="Vendedores">
+                <ScalarProperty Name="VendedorID" ColumnName="VendedorID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Comision" ColumnName="Comision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenesTrabajoDets">
+            <EntityTypeMapping TypeName="SAI_CableModel.OrdenesTrabajoDet">
+              <MappingFragment StoreEntitySet="OrdenesTrabajoDet">
+                <ScalarProperty Name="OrdenID" ColumnName="OrdenID" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tecnicos">
+            <EntityTypeMapping TypeName="SAI_CableModel.Tecnico">
+              <MappingFragment StoreEntitySet="Tecnicos">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estatus">
+            <EntityTypeMapping TypeName="SAI_CableModel.Estatu">
+              <MappingFragment StoreEntitySet="Estatus">
+                <ScalarProperty Name="DescripcionEstatus" ColumnName="DescripcionEstatus" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenesTrabajoes">
+            <EntityTypeMapping TypeName="SAI_CableModel.OrdenesTrabajo">
+              <MappingFragment StoreEntitySet="OrdenesTrabajo">
+                <ScalarProperty Name="DescripcionSolucion" ColumnName="DescripcionSolucion" />
+                <ScalarProperty Name="AlmacenInID" ColumnName="AlmacenInID" />
+                <ScalarProperty Name="Fch_Cierre" ColumnName="Fch_Cierre" />
+                <ScalarProperty Name="Fch_Creacion" ColumnName="Fch_Creacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="DescripcionFalla" ColumnName="DescripcionFalla" />
+                <ScalarProperty Name="FallaID" ColumnName="FallaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="OrdenID" ColumnName="OrdenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fallas">
+            <EntityTypeMapping TypeName="SAI_CableModel.Falla">
+              <MappingFragment StoreEntitySet="Fallas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FallaID" ColumnName="FallaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="SAI_CableModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="BarrioColoniaID" ColumnName="BarrioColoniaID" />
+                <ScalarProperty Name="NodoId" ColumnName="NodoId" />
+                <ScalarProperty Name="CiudadTrabajoID" ColumnName="CiudadTrabajoID" />
+                <ScalarProperty Name="TerceraEdad" ColumnName="TerceraEdad" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="DireccionTrabajo" ColumnName="DireccionTrabajo" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Telefono3ID" ColumnName="Telefono3ID" />
+                <ScalarProperty Name="Telefono3" ColumnName="Telefono3" />
+                <ScalarProperty Name="Telefono2ID" ColumnName="Telefono2ID" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono1ID" ColumnName="Telefono1ID" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="ClaveUbicacion" ColumnName="ClaveUbicacion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="PosteID" ColumnName="PosteID" />
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="Identidad" ColumnName="Identidad" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetMateriales">
+            <EntityTypeMapping TypeName="SAI_CableModel.DetMateriale">
+              <MappingFragment StoreEntitySet="DetMateriales">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="OrdenID" ColumnName="OrdenID" />
+                <ScalarProperty Name="DetMaterialesID" ColumnName="DetMaterialesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="SAI_CableModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="UnidadID" ColumnName="UnidadID" />
+                <ScalarProperty Name="DescripcionMaterial" ColumnName="DescripcionMaterial" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unidads">
+            <EntityTypeMapping TypeName="SAI_CableModel.Unidad">
+              <MappingFragment StoreEntitySet="Unidad">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UnidadID" ColumnName="UnidadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="agregarmaterial" FunctionName="SAI_CableModel.Store.agregarmaterial" />
+          <FunctionImportMapping FunctionImportName="cambiacoordenadas" FunctionName="SAI_CableModel.Store.cambiacoordenadas" />
+          <FunctionImportMapping FunctionImportName="ModificaOrden" FunctionName="SAI_CableModel.Store.ModificaOrden" />
+          <FunctionImportMapping FunctionImportName="EliminarOrdenDet" FunctionName="SAI_CableModel.Store.EliminarOrdenDet" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

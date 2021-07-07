@@ -6,14 +6,17 @@ using System.Web.Mvc;
 
 namespace IT_Help_Desk.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Home")]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
         }
-
+        public PartialViewResult slider()
+        {
+            return PartialView();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

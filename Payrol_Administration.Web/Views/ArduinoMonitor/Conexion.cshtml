@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Conexion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-container" onLoad="doSomething()" >
+    <div class="page-content">
+        <div class="row">
+            <h2>Conexion</h2>
+            <button id="actualiza" class="btn btn-default " value="actualiza"><img id="76" />Comenzar</button>
+            <div id="resultado"></div>
+        </div>
+    </div>
+</div>
+
+
+@*------------------script -------------------------*@
+<script type="text/javascript">
+    //var x = 0;
+    setInterval('contador()', 1000);
+    var URL = '../ArduinoMonitor/Medidor';
+    function contador() {
+        //x = x + 1;
+        //alert("contador : "+x);
+        $.ajax({ url: URL, contentType: 'application/html; charset=utf-8', type: 'GET', datatype: 'html' }).success(function (result) {
+            $('#resultado').html(result);
+        })
+    }
+       
+    
+</script>

@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <!-- META SECTION -->
-    <title>Simtex-International</title>
+    <title>SIMCPREC</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,7 +67,7 @@
             <!-- START X-NAVIGATION -->
             <ul class="x-navigation">
                 <li class="xn-logo">
-                    <a href="~/Atlant/index.cshtml">INICIO</a>
+                    <a  href="~/Home/Index">INICIO</a>
                     <a href="~/Content/#" class="x-navigation-control"></a>
                 </li>
                 <li class="xn-profile">
@@ -127,7 +127,7 @@
 
 
                             <div class="profile-data-name">@Lista2[0].UserName</div>
-                            <div class="profile-data-title">Simtex International</div>
+                            <div class="profile-data-title">SIMCPREC</div>
 
 
                         </div>
@@ -140,69 +140,23 @@
                 <li class="xn-title">Navigation</li>
 
                @if (Request.IsAuthenticated && User.IsInRole("Home"))
+                            {
+                <li><a href="~/Home/Index"><span class="fa fa-cogs"></span> <span class="xn-text">Inicio</span></a></li>
+               }
+
+
+                @if (Request.IsAuthenticated && User.IsInRole("Home"))
                 {
-                <li><a href="~/Home/Index"><span class="fa fa-cogs"></span> <span class="xn-text">Home</span></a></li>
+                     <li><a href="~/ArduinoMonitor/Index"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Tablero</span></a></li>
                 }
+
+                @if (Request.IsAuthenticated && User.IsInRole("Home"))
+                {
+                    <li><a href="~/ArduinoMonitor/Conexion"><span class="fa fa-gears"></span> <span class="xn-text">Conexion Arduino</span></a></li>
+                }
+
                 @*-----------------------------------------------------------------------Agregando Menu-------------------------------------------*@
-                   <li class="xn-openable">
-                   <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">O.T.</span></a>
-                        <ul>
-                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <li><a href="~/OT/Index"><span class="glyphicon glyphicon-calendar"></span><span class="xn-text">Ordenes de Trabajo</span></a></li>
-                        }
-                        @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
-                        {
-                            <li><a href="~/KnittingProduction/Index"><span class="fa fa-calendar"></span><span class="xn-text">Knitting Production</span></a></li>
-                        }
-
-                        @if (Request.IsAuthenticated && User.IsInRole("HistoryKnitting-Read"))
-                        {
-                            <li><a href="~/Historyknitting/Index"><span class="glyphicon glyphicon-calendar"></span><span class="xn-text">History Knitting</span></a></li>
-                        }
-                        @if (Request.IsAuthenticated && User.IsInRole("KnitToBatch-Read"))
-                        {
-                            <li><a href="~/KnitToBatch/Index"><span class="fa fa-bars"></span> <span class="xn-text">Knit to Batch</span></a></li>
-                        }
-                        @*@if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
-                        {
-                            <li><a href="~/DailyProductionReport/Index"><span class="glyphicon glyphicon-tasks"></span> <span class="xn-text"> Daily Production Report</span></a></li>
-                        }*@
-                            @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
-                            {
-                                <li><a href="~/KnittingPerformance/Index"><span class="glyphicon glyphicon-ok-circle"></span> <span class="xn-text">Knitting Performance</span></a></li>
-                            }
-
-
-                            @if (Request.IsAuthenticated && User.IsInRole("KnittingProduction-Read"))
-                            {
-                                <li><a href="~/DialyProduction1/Index"><span class="glyphicon glyphicon-ok-circle"></span> <span class="xn-text">Daily Production</span></a></li>
-                            }       
-                        </ul>
-                    </li>
-
-                    
-                    
-                    @if (Request.IsAuthenticated && User.IsInRole("PAT-Read"))
-                    {
-                        <li><a href="~/PAT/Index"><span class="fa fa-th"></span> <span class="xn-text">PAT</span></a></li>
-                    }
-                    
-                    @if (Request.IsAuthenticated && User.IsInRole("YarnRequest-Read"))
-                    {
-                        <li><a href="~/SolicitudDeHilazas/Index"><span class="fa fa-pencil-square-o"></span> <span class="xn-text">Yarn Request</span></a></li>
-
-                    }
-
-                    @if (Request.IsAuthenticated && User.IsInRole("AuditLocations-Read"))
-                    {
-                        <li><a href="#"><span class="fa fa-check-square-o"></span> <span class="xn-text">Audit Locations</span></a></li>
-                    }
-
-                    @if (Request.IsAuthenticated && User.IsInRole("KnittingProductionChart-Read"))
-                    {
-                        <li><a href="~/ProductionChart/Index"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Knitting Production Chart</span></a></li>
-                    }
+                 
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {

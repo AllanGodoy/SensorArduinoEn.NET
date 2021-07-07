@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="218773439c9e401c988f3a1c79faee02" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="SAI_CableModel.Almacene" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Banco" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.BarrioColonia" Width="1.5" PointX="1.125" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.CajaCobro" Width="1.5" PointX="3" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.CallAve" Width="1.5" PointX="1.5" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.CallAvePa" Width="1.5" PointX="1.5" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Cobradore" Width="1.5" PointX="0.75" PointY="46.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Cobro" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.CobrosDet" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Configuracion" Width="1.5" PointX="11.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.ContratoDet" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Contrato" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Departamento" Width="1.5" PointX="1.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Estado" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Factura" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Linea" Width="1.5" PointX="10.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Municipio" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Nodo" Width="1.5" PointX="0.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Oficina" Width="1.5" PointX="0.75" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Pai" Width="1.5" PointX="1.5" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Poste" Width="1.5" PointX="0.75" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Producto" Width="1.5" PointX="12.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Servicio" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Solucione" Width="1.5" PointX="3" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.sysdiagram" Width="1.5" PointX="10.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Tarifa" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.TelefonoTipo" Width="1.5" PointX="0.75" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.TipoCobro" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.TipoMovimiento" Width="1.5" PointX="12.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.Vendedore" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAI_CableModel.OrdenesTrabajoDet" Width="1.5" PointX="13.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="SAI_CableModel.fkCobrosBanco" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkBarrio" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCallAveCol" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosBarrio" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkNodosBarr" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkPostesColonia" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCajaCobrador" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCajaOficina" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCobrosCaja" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCallAve" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkPostesCallAve" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkPostesCallAvePas" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCobrosCobrador" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkCobrosTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratoDet" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratoEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratoTarifa" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkFacturaContrato" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosEstados" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkcontratosNodos" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosPostes" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosVendedores" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkDepPais" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkMunDep" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkOficinaMun" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkPostesNodos" ManuallyRouted="false" />
+        <AssociationConnector Association="SAI_CableModel.fkTarifaServicio" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAI_CableModel.Tecnico" Width="1.5" PointX="15.375" PointY="5.875" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosTecnicos" />
+        <EntityTypeShape EntityType="SAI_CableModel.Estatu" Width="1.5" PointX="3.75" PointY="33.75" />
+        <EntityTypeShape EntityType="SAI_CableModel.OrdenesTrabajo" Width="1.5" PointX="6" PointY="24.75" />
+        <AssociationConnector Association="SAI_CableModel.FK_OrdenesTrabajo_Estatus" />
+        <EntityTypeShape EntityType="SAI_CableModel.Falla" Width="1.5" PointX="3.375" PointY="3.875" />
+        <AssociationConnector Association="SAI_CableModel.fkOrdenesFallas" />
+        <EntityTypeShape EntityType="SAI_CableModel.Cliente" Width="1.5" PointX="4.25" PointY="18" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesBarrio" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesEstado" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesMun" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesNodo" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesPostes" />
+        <AssociationConnector Association="SAI_CableModel.fkClientesTelf3" />
+        <AssociationConnector Association="SAI_CableModel.fkCobrosClie" />
+        <AssociationConnector Association="SAI_CableModel.fkContratosClientes" />
+        <AssociationConnector Association="SAI_CableModel.fkFacturaCliente" />
+        <AssociationConnector Association="SAI_CableModel.fkOrdenesClientes" />
+        <EntityTypeShape EntityType="SAI_CableModel.DetMateriale" Width="1.5" PointX="9.25" PointY="25.375" />
+        <EntityTypeShape EntityType="SAI_CableModel.Material" Width="1.5" PointX="11.375" PointY="25.375" />
+        <EntityTypeShape EntityType="SAI_CableModel.Unidad" Width="1.5" PointX="13.625" PointY="25.875" />
+        <AssociationConnector Association="SAI_CableModel.FK_DetMateriales_Material" />
+        <AssociationConnector Association="SAI_CableModel.FK_DetMateriales_OrdenesTrabajo" />
+        <AssociationConnector Association="SAI_CableModel.FK_Material_Unidad" />
+        <AssociationConnector Association="SAI_CableModel.FK_OrdenesTrabajo_Tecnicos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
