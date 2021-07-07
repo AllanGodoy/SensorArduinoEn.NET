@@ -4,12 +4,15 @@ Proyecto realizado en la Universidad Tecnológica de Honduras para la feria de l
 
 A través de un sistema en .NET se controla un sensor de agua que está conectado a un arduino. con sistema de acceso por usuario.
 
-
 password de la aplicación 
+
+
+
 
 user: admin@example.com   //probar solo admin <-- no recuerdo usuario muy bien
 
 pass: Admin@123456
+
 
 
 
