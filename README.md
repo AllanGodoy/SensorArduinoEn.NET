@@ -26,3 +26,6 @@ ID=sa;Password=Tigre2016+
 
 
 espero les sirva de ayuda en sus proyectos.
+
+
+en una carpeta dice payrol, ya que ibamos hacer un sistema de nomina pero al final decidimos algo mas sencillo por el tiempo de entrega. 
